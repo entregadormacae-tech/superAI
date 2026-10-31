@@ -1,0 +1,31 @@
+from crewai import Agent
+from langchain_openai import ChatOpenAI
+from config import settings
+
+base_llm = ChatOpenAI(model=settings.DEFAULT_MODEL, temperature=0.3)
+premium_llm = ChatOpenAI(model=settings.PREMIUM_MODEL, temperature=0.2)
+
+researcher_agent = Agent(
+    role="Pesquisador e Analista",
+    goal="Encontrar informações precisas e atualizadas com fontes",
+    backstory="Você é especialista em pesquisa. Nunca invente dados. Sempre cite fontes.",
+    llm=premium_llm,
+    verbose=False
+)
+
+validator_agent = Agent(
+    role="Revisor de Precisão",
+    goal="Garantir que todas as respostas sejam corretas e claras",
+    backstory="Você verifica fatos e lógica. Se algo estiver errado, corrija com clareza.",
+    llm=base_llm,
+    verbose=False
+)
+
+coder_agent = Agent(
+    role="Engenheiro e Analista",
+    goal="Criar e explicar códigos e cálculos de forma correta",
+    backstory="Você é preciso e documenta tudo. Sempre verifica antes de entregar.",
+    llm=premium_llm,
+    verbose=False,
+    allow_code_execution=True
+)

@@ -1,0 +1,75 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from datetime import datetime
+import time
+import os
+from dotenv import load_dotenv
+from config import settings
+from router import IntelligentRouter, TaskComplexity
+from agents import researcher_agent, validator_agent, coder_agent
+from crewai import Task, Crew
+from langchain_openai import ChatOpenAI
+
+load_dotenv()
+app = FastAPI(title="SuperAI Ecossistema", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class ChatRequest(BaseModel):
+    message: str
+    user_id: str = "usuario_web"
+
+class ChatResponse(BaseModel):
+    answer: str
+    complexity: str
+    tempo: float
+
+@app.get("/")
+def root():
+    return {"nome": "SuperAI Ecossistema", "versao": "1.0.0", "status": "online"}
+
+@app.post("/api/chat", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    inicio = time.time()
+    
+    complexidade, custo, modelo = IntelligentRouter.analyze_query(request.message)
+    
+    if complexidade == TaskComplexity.SIMPLE:
+        llm = ChatOpenAI(model=model, api_key=os.getenv("OPENAI_API_KEY"))
+        resposta = llm.invoke(request.message)
+        texto = resposta.content
+        
+    elif complexidade == TaskComplexity.RESEARCH:
+        tarefa_pesquisa = Task(
+            description=f"Pesquise e responda com fontes: {request.message}",
+            expected_output="Resposta com fontes citadas",
+            agent=researcher_agent
+        )
+        tarefa_revisao = Task(
+            description=f"Revise e melhore esta resposta.",
+            expected_output="Resposta final revisada",
+            agent=validator_agent
+        )
+        equipe = Crew(agents=[researcher_agent, validator_agent], tasks=[tarefa_pesquisa, tarefa_revisao], verbose=False)
+        resultado = equipe.kickoff()
+        texto = str(resultado)
+        
+    else:
+        texto = "🔧 Modo completo em desenvolvimento. Use perguntas mais simples ou de pesquisa para testar!"
+    
+    tempo_total = round(time.time() - inicio, 2)
+    
+    return ChatResponse(answer=texto, complexity=complexidade.value, tempo=tempo_total)
+
+if __name__ == "__main__":
+    import uvicorn
+    print("🚀 SuperAI Ecossistema iniciando...")
+    print("📍 Servidor: http://localhost:8000")
+    uvicorn.run(app, host="0.0.0.0", port=8000)

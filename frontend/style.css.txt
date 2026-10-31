@@ -1,0 +1,124 @@
+:root {
+    --primaria: #6366f1;
+    --secundaria: #8b5cf6;
+    --fundo: #f8fafc;
+    --fundo-card: #ffffff;
+    --texto: #1e293b;
+    --texto-claro: #64748b;
+    --borda: #e2e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); min-height: 100vh; }
+
+.app-container { display: flex; min-height: 100vh; max-width: 1400px; margin: 0 auto; background: var(--fundo); }
+
+.sidebar {
+    width: 280px; background: white; border-right: 1px solid var(--borda);
+    display: flex; flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px; border-bottom: 1px solid var(--borda);
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo { font-size: 20px; background: linear-gradient(135deg, var(--primaria), var(--secundaria)); -webkit-background-clip: text; color: transparent; }
+
+.user-section { padding: 16px 20px; border-bottom: 1px solid var(--borda); }
+
+.user-name { font-weight: 600; font-size: 15px; }
+
+.badge-free {
+    background: #d1fae5; color: #059669;
+    padding: 2px 8px; border-radius: 12px; font-size: 12px; display: inline-block; margin: 6px 0;
+}
+
+.upgrade-btn {
+    width: 100%; background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white; border: none; padding: 10px; border-radius: 8px;
+    font-weight: 600; cursor: pointer; margin-top: 8px;
+}
+
+.limits-panel, .quick-tools { padding: 16px 20px; border-bottom: 1px solid var(--borda); }
+
+.limits-panel h3, .quick-tools h3 { font-size: 12px; text-transform: uppercase; color: var(--texto-claro); margin-bottom: 10px; }
+
+.limit-item { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+
+.reset-info { font-size: 11px; color: var(--texto-claro); margin-top: 4px; }
+
+.tool-btn {
+    width: 100%; background: var(--fundo); border: 1px solid var(--borda);
+    border-radius: 6px; padding: 8px 10px; text-align: left; margin-bottom: 5px;
+    cursor: pointer; font-size: 14px;
+}
+
+.tool-btn:hover { border-color: var(--primaria); }
+
+.main-content { flex: 1; display: flex; flex-direction: column; background: var(--fundo); }
+
+.top-header {
+    background: white; padding: 14px 24px; border-bottom: 1px solid var(--borda);
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+.menu-toggle { display: none; background: none; border: none; font-size: 22px; cursor: pointer; }
+
+.top-header h2 { font-size: 18px; color: var(--texto); }
+
+.chat-area { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.mensagem {
+    max-width: 80%; padding: 14px 18px; border-radius: 18px; line-height: 1.5;
+    animation: aparece 0.3s ease;
+}
+
+@keyframes aparece { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.usuario {
+    background: linear-gradient(135deg, var(--primaria), var(--secundaria));
+    color: white; margin-left: auto; border-bottom-right-radius: 5px;
+}
+
+.assistente {
+    background: white; border: 1px solid var(--borda);
+    color: var(--texto); border-bottom-left-radius: 5px;
+}
+
+.boas-vindas { background: linear-gradient(to right, #eff6ff, #faf5ff); border-left: 3px solid var(--primaria); }
+
+.entrada-container { padding: 20px; background: white; border-top: 1px solid var(--borda); }
+
+.entrada { display: flex; gap: 10px; align-items: flex-end; }
+
+textarea {
+    flex: 1; border: 2px solid var(--borda); border-radius: 10px; padding: 12px;
+    font-size: 15px; outline: none; resize: none; min-height: 50px;
+}
+
+textarea:focus { border-color: var(--primaria); }
+
+.enviar-btn {
+    background: linear-gradient(135deg, var(--primaria), var(--secundaria));
+    color: white; border: none; padding: 14px 24px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+}
+
+.enviar-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden { display: none; }
+
+.modal-conteudo {
+    background: white; padding: 30px; border-radius: 16px; max-width: 400px; width: 90%;
+    text-align: center;
+}
+
+.fechar { float: right; font-size

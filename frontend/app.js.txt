@@ -1,0 +1,159 @@
+// ⚠️ DEPOIS DE SUBIR PARA A INTERNET, TROQUE ESTE LINK PELO SEU:
+let API_URL = "";
+
+// Contadores do plano gratuito
+let contadorMensagens = 30;
+let contadorImagens = 3;
+let contadorVideos = 1;
+
+// Atualiza os números na telinha
+function atualizarContadores() {
+    document.getElementById('limite-mensagens').textContent = `${contadorMensagens}/30`;
+    document.getElementById('limite-imagens').textContent = `${contadorImagens}/3`;
+    document.getElementById('limite-videos').textContent = `${contadorVideos}/1`;
+}
+
+// Adiciona uma mensagem na conversa
+function adicionarMensagem(texto, classe) {
+    const chat = document.getElementById('chat');
+    const div = document.createElement('div');
+    div.className = `mensagem ${classe}`;
+    div.innerHTML = texto.replace(/\n/g, '<br>');
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+    return div;
+}
+
+// Envia a mensagem para a IA
+async function enviarMensagem() {
+    const input = document.getElementById('mensagem');
+    const botao = document.getElementById('enviar');
+    const texto = input.value.trim();
+
+    if (!texto) return;
+
+    // Verifica limite de mensagens
+    if (contadorMensagens <= 0) {
+        alert("⚠️ Você usou todas suas mensagens de hoje! Volte amanhã. 😊");
+        return;
+    }
+
+    // Mostra a mensagem do usuário
+    adicionarMensagem("<strong>Você:</strong> " + texto, "usuario");
+    input.value = "";
+    botao.disabled = true;
+    botao.textContent = "Pensando...";
+
+    // Mensagem de carregamento
+    const loading = adicionarMensagem("⏳ Pensando...", "assistente");
+
+    try {
+        // Verifica se já temos o link da API
+        if (!API_URL || API_URL === "") {
+            loading.remove();
+            adicionarMensagem(
+                "⚠️ Ainda não configurei o link do servidor! 😊<br>" +
+                "Quando colocar no ar, cole o link daqui no lugar certo: " +
+                "<code style='background:#eee;padding:2px 6px;border-radius:4px'>API_URL = 'seu-link/aqui'</code>",
+                "assistente"
+            );
+            botao.disabled = false;
+            botao.textContent = "Enviar ✨";
+            return;
+        }
+
+        // Envia para o servidor
+        const resposta = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: texto, user_id: "usuario_web" })
+        });
+
+        const dados = await resposta.json();
+
+        // Remove o "carregando" e mostra a resposta
+        loading.remove();
+        adicionarMensagem(
+            `<strong>🚀 SuperAI:</strong><br><br>${dados.answer}<br><small style="color:#888">⏱️ ${dados.tempo}s</small>`,
+            "assistente"
+        );
+
+        // Diminui 1 mensagem e atualiza
+        contadorMensagens--;
+        atualizarContadores();
+
+    } catch (erro) {
+        loading.remove();
+        adicionarMensagem(
+            "😕 Parece que estou desconectado! Verifique sua internet ou tente novamente em instantes.",
+            "assistente"
+        );
+        console.error(erro);
+    }
+
+    botao.disabled = false;
+    botao.textContent = "Enviar ✨";
+}
+
+// Ferramentas rápidas da barra lateral
+function usarFerramenta(tipo) {
+    const input = document.getElementById('mensagem');
+    switch(tipo) {
+        case 'resumir':
+            input.value = "📄 Por favor, resuma este texto para mim:\n\nCole seu texto aqui...";
+            break;
+        case 'escrever':
+            input.value = "✍️ Escreva um texto sobre: ";
+            break;
+        case 'traduzir':
+            input.value = "🌐 Traduza para português: ";
+            break;
+        case 'ideias':
+            input.value = "💡 Dê-me ideias criativas sobre: ";
+            break;
+        case 'calcular':
+            input.value = "🧮 Calcule ou resolva: ";
+            break;
+    }
+    input.focus();
+}
+
+// Nova conversa
+function novaConversa() {
+    document.getElementById('chat').innerHTML = "";
+    adicionarMensagem(
+        "<strong>🚀 Conversa reiniciada! 👋</strong><br>Em que posso ajudar você agora?",
+        "assistente"
+    );
+}
+
+// Mostra o modal do plano Pro
+function mostrarUpgrade() {
+    document.getElementById('modal-upgrade').classList.remove('hidden');
+}
+
+// Fecha janelas
+function fecharModal(nome) {
+    document.getElementById(nome).classList.add('hidden');
+}
+
+// Envia com Enter (sempre funciona!)
+document.getElementById('mensagem').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        enviarMensagem();
+    }
+});
+
+// Mostra/Esconde barra lateral (no celular)
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.transform = sidebar.style.transform === "translateX(-100%)" ? "" : "translateX(-100%)";
+}
+
+// Inicia tudo quando a página abre
+window.onload = function() {
+    atualizarContadores();
+    console.log("✅ SuperAI pronto!");
+    console.log("ℹ️ Lembre-se: troque API_URL pelo link do seu servidor quando estiver no ar.");
+};

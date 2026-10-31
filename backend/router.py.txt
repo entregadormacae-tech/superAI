@@ -1,0 +1,23 @@
+from enum import Enum
+from typing import Tuple
+from config import settings
+
+class TaskComplexity(Enum):
+    SIMPLE = "simples"
+    RESEARCH = "pesquisa"
+    COMPLEX = "complexa"
+
+class IntelligentRouter:
+    @staticmethod
+    def analyze_query(user_input: str) -> Tuple[TaskComplexity, float, str]:
+        query = user_input.lower()
+        
+        research_words = ["pesquise", "busque", "notícias", "dados", "preço", "compare", "colete"]
+        code_words = ["código", "programa", "calcule", "script", "debug"]
+        
+        if any(word in query for word in research_words + code_words):
+            return TaskComplexity.RESEARCH, 0.01, settings.PREMIUM_MODEL
+        elif len(user_input) > 300 or "detalhadamente" in query:
+            return TaskComplexity.COMPLEX, 0.03, settings.PREMIUM_MODEL
+        else:
+            return TaskComplexity.SIMPLE, 0.0003, settings.DEFAULT_MODEL

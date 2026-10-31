@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAI — Seu Assistente Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">🚀 SuperAI</h1>
+                <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+            </div>
+
+            <div class="user-section">
+                <div class="user-info">
+                    <span class="user-name">Usuário Convidado</span>
+                    <span class="user-plan badge-free">Plano Gratuito</span>
+                </div>
+                <button class="upgrade-btn" onclick="mostrarUpgrade()">✨ Assinar Pro</button>
+            </div>
+
+            <div class="limits-panel">
+                <h3>📊 Seus limites hoje</h3>
+                <div class="limit-item">
+                    <span>💬 Mensagens</span>
+                    <span id="limite-mensagens">30/30</span>
+                </div>
+                <div class="limit-item">
+                    <span>🖼️ Imagens</span>
+                    <span id="limite-imagens">3/3</span>
+                </div>
+                <div class="limit-item">
+                    <span>🎬 Vídeos</span>
+                    <span id="limite-videos">1/1</span>
+                </div>
+                <div class="reset-info">⏰ Limites renovam à meia-noite</div>
+            </div>
+
+            <nav class="quick-tools">
+                <h3>⚡ Ferramentas Rápidas</h3>
+                <button class="tool-btn" onclick="usarFerramenta('resumir')">📄 Resumir Texto</button>
+                <button class="tool-btn" onclick="usarFerramenta('escrever')">✍️ Escrever</button>
+                <button class="tool-btn" onclick="usarFerramenta('traduzir')">🌐 Traduzir</button>
+                <button class="tool-btn" onclick="usarFerramenta('ideias')">💡 Gerar Ideias</button>
+                <button class="tool-btn" onclick="usarFerramenta('calcular')">🧮 Calcular</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+                <h2 id="titulo-modo">Conversa</h2>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="novaConversa()" title="Nova Conversa">➕</button>
+                </div>
+            </header>
+
+            <div id="chat" class="chat-area">
+                <div class="mensagem assistente boas-vindas">
+                    <strong>🚀 Bem-vindo ao SuperAI! 👋</strong><br><br>
+                    Eu sou seu assistente completo — posso responder dúvidas, resumir textos, escrever, traduzir e muito mais!<br><br>
+                    🆓 No plano gratuito você tem: 30 mensagens/dia, sem anúncios! 😊
+                </div>
+            </div>
+
+            <div class="entrada-container">
+                <div class="entrada">
+                    <textarea id="mensagem" placeholder="Digite sua mensagem..." rows="2"></textarea>
+                    <button id="enviar" class="enviar-btn" onclick="enviarMensagem()">Enviar ✨</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-upgrade" class="modal hidden">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharModal('modal-upgrade')">×</span>
+            <h2>💎 SuperAI Pro — Em breve!</h2>
+            <p>Fique ligado, em breve teremos um plano completo com ainda mais recursos!</p>
+            <button class="fechar-btn" onclick="fecharModal('modal-upgrade')">Entendi!</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

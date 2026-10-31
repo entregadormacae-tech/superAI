@@ -1,0 +1,15 @@
+from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Settings(BaseSettings):
+    OPENAI_API_KEY: str = ""
+    ANTHROPIC_API_KEY: str = ""
+    DEFAULT_MODEL: str = "gpt-4o-mini"
+    PREMIUM_MODEL: str = "gpt-4o"
+    MAX_CONTEXT_TOKENS: int = 128000
+    FREE_DAILY_LIMIT: int = 30
+    PRO_DAILY_LIMIT: int = 500
+
+settings = Settings()
