@@ -1,2 +1,3 @@
-print("🚀 SuperAI iniciando...")
-print("✅ Servidor rodando com sucesso!")
+from fastapi import FastAPI
+
+app = FastAPI()
