@@ -1,36 +1,65 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import openai
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from dotenv import load_dotenv
 import os
+import requests
 
-app = Flask(__name__)
-CORS(app)
+load_dotenv()
+app = FastAPI()
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.route('/')
-def index():
-    return "✅ SuperAI API está funcionando!"
+class Mensagem(BaseModel):
+    texto: str
+    historico: list = []
 
-@app.route('/api/mensagem', methods=['POST'])
-def mensagem():
+api_key = os.getenv("OPENAI_API_KEY")
+
+@app.get("/")
+def home():
+    return {"mensagem": "✅ Nicoluz IA está online!"}
+
+@app.post("/api/chat")
+def chat(mensagem: Mensagem):
+    if not api_key:
+        return {"resposta": "⚠️ Chave da OpenAI não configurada!"}
+    
     try:
-        dados = request.json
-        texto_usuario = dados.get('mensagem', '')
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
         
-        resposta = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "Você é a SuperAI, uma assistente amigável e prestativa."},
-                {"role": "user", "content": texto_usuario}
-            ]
+        dados = {
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                {"role": "system", "content": "Você é a Nicoluz IA, uma assistente amigável e prestativa. Responda de forma clara e natural em português."},
+                *mensagem.historico,
+                {"role": "user", "content": mensagem.texto}
+            ],
+            "temperature": 0.7
+        }
+        
+        resposta = requests.post(
+            "https://api.openai.com/v1/chat/completions",
+            headers=headers,
+            json=dados,
+            timeout=30
         )
         
-        return jsonify({
-            "resposta": resposta.choices[0].message.content
-        })
+        if resposta.status_code == 200:
+            resultado = resposta.json()
+            texto_resposta = resultado["choices"][0]["message"]["content"]
+            return {"resposta": texto_resposta}
+        else:
+            return {"resposta": f"❌ Erro: {resposta.status_code} — Verifique sua chave da OpenAI."}
+    
     except Exception as e:
-        return jsonify({"erro": str(e)}), 500
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+        return {"resposta": f"⚠️ Erro de conexão: {str(e)}"}
