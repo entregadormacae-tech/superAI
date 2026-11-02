@@ -203,5 +203,5 @@ async function enviarMensagem() {
 document.getElementById('btn-microfone').addEventListener('click', function() {
     alert('🎤 Entrada de voz em desenvolvimento! Em breve disponível!');
 });
-
+ 
 console.log('✅ Nicoluz IA carregada com sucesso!');
