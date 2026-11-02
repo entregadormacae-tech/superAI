@@ -4,131 +4,175 @@ function mostrarTela(idTela) {
         tela.classList.remove('ativa');
     });
     document.getElementById(idTela).classList.add('ativa');
+    fecharMenu();
 }
 
 // ===== MENU LATERAL =====
 const menuLateral = document.getElementById('menu-lateral');
 
-document.getElementById('btn-abrir-menu').addEventListener('click', () => {
+function abrirMenu() {
     menuLateral.classList.remove('escondido');
-});
+}
 
-document.getElementById('fechar-menu').addEventListener('click', () => {
+function fecharMenu() {
     menuLateral.classList.add('escondido');
+}
+
+// Fecha menu ao clicar fora dele
+menuLateral.addEventListener('click', function(e) {
+    if (e.target === menuLateral) {
+        fecharMenu();
+    }
 });
 
 // ===== BOTÕES DA TELA INICIAL =====
-document.getElementById('btn-entrar').addEventListener('click', () => {
+document.getElementById('btn-entrar').addEventListener('click', function() {
     mostrarTela('tela-login');
 });
 
-document.getElementById('btn-cadastrar').addEventListener('click', () => {
+document.getElementById('btn-cadastrar').addEventListener('click', function() {
     mostrarTela('tela-cadastro');
 });
 
 // ===== BOTÕES DE VOLTAR =====
-document.getElementById('voltar-inicio-login').addEventListener('click', () => {
+document.getElementById('voltar-login').addEventListener('click', function() {
     mostrarTela('tela-inicio');
 });
 
-document.getElementById('voltar-inicio-cadastro').addEventListener('click', () => {
+document.getElementById('voltar-cadastro').addEventListener('click', function() {
     mostrarTela('tela-inicio');
 });
 
-document.getElementById('voltar-chat-temas').addEventListener('click', () => {
+document.getElementById('voltar-temas').addEventListener('click', function() {
     mostrarTela('tela-chat');
 });
 
-document.getElementById('voltar-chat-vozes').addEventListener('click', () => {
+document.getElementById('voltar-vozes').addEventListener('click', function() {
     mostrarTela('tela-chat');
 });
 
 // ===== FORMULÁRIOS =====
-document.getElementById('form-login').addEventListener('submit', (e) => {
+document.getElementById('form-login').addEventListener('submit', function(e) {
     e.preventDefault();
+    alert('✅ Entrando... Bem-vindo ao Nicoluz IA!');
     mostrarTela('tela-chat');
-    menuLateral.classList.add('escondido');
 });
 
-document.getElementById('form-cadastro').addEventListener('submit', (e) => {
+document.getElementById('form-cadastro').addEventListener('submit', function(e) {
     e.preventDefault();
+    alert('✅ Conta criada com sucesso! Bem-vindo ao Nicoluz IA!');
     mostrarTela('tela-chat');
-    menuLateral.classList.add('escondido');
 });
 
 // ===== ITENS DO MENU =====
-document.getElementById('ir-temas').addEventListener('click', () => {
+document.getElementById('ir-temas').addEventListener('click', function() {
     mostrarTela('tela-temas');
-    menuLateral.classList.add('escondido');
 });
 
-document.getElementById('ir-vozes').addEventListener('click', () => {
+document.getElementById('ir-vozes').addEventListener('click', function() {
     mostrarTela('tela-vozes');
-    menuLateral.classList.add('escondido');
 });
 
-document.getElementById('ir-preferencias').addEventListener('click', () => {
-    alert('Em breve! 😊');
-    menuLateral.classList.add('escondido');
+document.getElementById('ir-planos').addEventListener('click', function() {
+    alert('⚡ Plano Grátis: 50 mensagens/dia • sem anúncios\n💎 Plano Pro: Ilimitado + recursos extras\n\nEm breve disponível!');
+    fecharMenu();
 });
 
-document.getElementById('ir-planos').addEventListener('click', () => {
-    alert('Gratuito: 50 mensagens/dia ✅\nPro: Ilimitado + recursos extras ⚡');
-    menuLateral.classList.add('escondido');
+document.getElementById('ir-conta').addEventListener('click', function() {
+    alert('👤 Sua conta\n\nNome: Visitante\nPlano: Gratuito\nMensagens restantes hoje: 50/50');
+    fecharMenu();
 });
 
-document.getElementById('ir-conta').addEventListener('click', () => {
-    alert('Configurações da conta em breve! 😊');
-    menuLateral.classList.add('escondido');
+document.getElementById('ir-preferencias').addEventListener('click', function() {
+    alert('⚙️ Preferências em desenvolvimento!');
+    fecharMenu();
 });
 
-document.getElementById('btn-sair').addEventListener('click', () => {
-    mostrarTela('tela-inicio');
-    menuLateral.classList.add('escondido');
+document.getElementById('btn-sair').addEventListener('click', function() {
+    if (confirm('Tem certeza que deseja sair?')) {
+        mostrarTela('tela-inicio');
+    }
+    fecharMenu();
 });
 
-document.getElementById('btn-ver-planos').addEventListener('click', () => {
-    alert('Gratuito: 50 mensagens/dia ✅\nPro: Ilimitado + recursos extras ⚡');
+document.getElementById('fechar-menu').addEventListener('click', fecharMenu);
+document.getElementById('btn-abrir-menu').addEventListener('click', abrirMenu);
+
+// ===== BOTÃO PLANOS DO CHAT =====
+document.getElementById('btn-planos').addEventListener('click', function() {
+    alert('⚡ Plano Grátis: 50 mensagens/dia • sem anúncios\n💎 Plano Pro: Ilimitado + recursos extras\n\nEm breve disponível!');
 });
 
-// ===== MENU FLUTUANTE =====
-const botaoMais = document.querySelector('.btn-icone.mais');
-const menuMais = document.getElementById('menu-mais');
-
-if (botaoMais && menuMais) {
-    botaoMais.addEventListener('click', () => {
-        menuMais.classList.toggle('escondido');
+// ===== SELEÇÃO DE TEMAS =====
+document.querySelectorAll('.opcao-tema').forEach(tema => {
+    tema.addEventListener('click', function() {
+        // Remove seleção de todos
+        document.querySelectorAll('.opcao-tema').forEach(t => t.classList.remove('selecionado'));
+        // Adiciona na clicada
+        this.classList.add('selecionado');
+        
+        // Atualiza visual da marcação
+        document.querySelectorAll('.marca-selecionado').forEach(m => m.textContent = '');
+        this.querySelector('.marca-selecionado').textContent = '✓';
+        
+        // Aplica tema (simplificado)
+        const nomeTema = this.getAttribute('data-tema');
+        document.body.className = '';
+        if (nomeTema !== 'escuro') {
+            document.body.classList.add('tema-' + nomeTema);
+        }
     });
+});
+
+// ===== TESTE DE VOZES =====
+document.querySelectorAll('.btn-teste-voz').forEach(botao => {
+    botao.addEventListener('click', function() {
+        const nomeVoz = this.parentElement.getAttribute('data-voz');
+        const nomes = {
+            'calma': 'Calma e Suave',
+            'animada': 'Amigável e Animada',
+            'profissional': 'Clara e Profissional',
+            'masculina': 'Suave Masculina'
+        };
+        alert('🔊 Tocando amostra: ' + nomes[nomeVoz] + '\n\n(áudio será adicionado em breve!)');
+    });
+});
+
+// ===== CHAT — Enviar mensagem =====
+const campoMensagem = document.getElementById('campo-mensagem');
+const areaMensagens = document.getElementById('area-mensagens');
+
+function adicionarMensagem(texto, ehUsuario = false) {
+    const div = document.createElement('div');
+    div.className = 'mensagem ' + (ehUsuario ? 'usuario' : 'ia');
+    div.innerHTML = '<p>' + texto.replace(/\n/g, '</p><p>') + '</p>';
+    areaMensagens.appendChild(div);
+    areaMensagens.scrollTop = areaMensagens.scrollHeight; // Rola pra baixo
 }
 
-document.getElementById('opcao-camera')?.addEventListener('click', () => {
-    alert('Câmera em breve! 📷');
-    menuMais.classList.add('escondido');
+document.getElementById('btn-enviar').addEventListener('click', enviarMensagem);
+campoMensagem.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') enviarMensagem();
 });
 
-document.getElementById('opcao-fotos')?.addEventListener('click', () => {
-    alert('Galeria em breve! 🖼️');
-    menuMais.classList.add('escondido');
+function enviarMensagem() {
+    const texto = campoMensagem.value.trim();
+    if (!texto) return;
+    
+    // Mensagem do usuário
+    adicionarMensagem(texto, true);
+    campoMensagem.value = '';
+    
+    // Resposta da IA (simulada por enquanto)
+    setTimeout(() => {
+        adicionarMensagem('Recebi sua mensagem! ✨\n\nIsso é só uma amostra. Quando conectarmos a IA real, eu vou responder de verdade para você!');
+    }, 600);
+}
+
+// ===== BOTÃO MICROFONE =====
+document.getElementById('btn-microfone').addEventListener('click', function() {
+    alert('🎤 Entrada de voz em desenvolvimento! Em breve disponível!');
 });
 
-document.getElementById('opcao-arquivo')?.addEventListener('click', () => {
-    alert('Enviar arquivo em breve! 📁');
-    menuMais.classList.add('escondido');
-});
-
-document.getElementById('opcao-pensar')?.addEventListener('click', () => {
-    alert('Modo raciocínio em breve! 🧠');
-    menuMais.classList.add('escondido');
-});
-
-// ===== FECHAR MENU AO CLICAR FORA =====
-document.addEventListener('click', (e) => {
-    if (!menuLateral.contains(e.target) && !document.getElementById('btn-abrir-menu').contains(e.target)) {
-        menuLateral.classList.add('escondido');
-    }
-    if (menuMais && !menuMais.contains(e.target) && !botaoMais?.contains(e.target)) {
-        menuMais.classList.add('escondido');
-    }
-});
-
-console.log('✅ SuperAI carregado com sucesso!');
+// ===== INICIALIZAÇÃO =====
+console.log('✅ Nicoluz IA carregada com sucesso!');
