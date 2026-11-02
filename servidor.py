@@ -20,48 +20,31 @@ class Mensagem(BaseModel):
     texto: str
     historico: list = []
 
-# ✅ Agora usa a CHAVE DA GOOGLE
-google_api_key = os.getenv("GOOGLE_API_KEY")
+api_key = os.getenv("GOOGLE_API_KEY")
 
 @app.get("/")
 def home():
-    return {"mensagem": "✅ Nicoluz IA está online!"}
+    return {"mensagem": "✅ Nicoluz IA está online! Usando Gemini."}
 
 @app.post("/api/chat")
 def chat(mensagem: Mensagem):
-    if not google_api_key:
-        # ✅ Mensagem correta agora!
+    if not api_key:
         return {"resposta": "⚠️ Chave da Google não configurada!"}
     
     try:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={google_api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
         
         dados = {
             "contents": [
-                {
-                    "parts": [
-                        {"text": "Você é a Nicoluz IA, uma assistente amigável e prestativa. Responda de forma clara e natural em português."}
-                    ]
-                },
-                *[
-                    {"parts": [{"text": msg["text"]}]} 
-                    for msg in mensagem.historico
-                ],
-                {
-                    "parts": [{"text": mensagem.texto}]
-                }
+                {"parts": [{"text": "Você é a Nicoluz IA, uma assistente amigável e prestativa. Responda de forma clara e natural em português."}]},
+                {"parts": [{"text": mensagem.texto}]}
             ],
             "generationConfig": {
                 "temperature": 0.7
             }
         }
         
-        resposta = requests.post(
-            url,
-            headers={"Content-Type": "application/json"},
-            json=dados,
-            timeout=30
-        )
+        resposta = requests.post(url, json=dados, timeout=30)
         
         if resposta.status_code == 200:
             resultado = resposta.json()
@@ -69,9 +52,9 @@ def chat(mensagem: Mensagem):
                 texto_resposta = resultado["candidates"][0]["content"]["parts"][0]["text"]
                 return {"resposta": texto_resposta}
             except:
-                return {"resposta": "⚠️ Não consegui ler a resposta da IA."}
+                return {"resposta": "⚠️ Não consegui entender a resposta. Tente novamente."}
         else:
-            return {"resposta": f"❌ Erro: {resposta.status_code} — Verifique sua chave da Google."}
+            return {"resposta": f"❌ Erro {resposta.status_code}. Verifique sua chave da Google."}
     
     except Exception as e:
         return {"resposta": f"⚠️ Erro de conexão: {str(e)}"}
