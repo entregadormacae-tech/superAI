@@ -26,11 +26,11 @@ menuLateral.addEventListener('click', function(e) {
 
 // ===== BOTÕES DA TELA INICIAL =====
 document.getElementById('btn-entrar').addEventListener('click', function() {
-    mostrarTela('tela-login');
+    mostrarTela('tela-chat');
 });
 
 document.getElementById('btn-cadastrar').addEventListener('click', function() {
-    mostrarTela('tela-cadastro');
+    mostrarTela('tela-chat');
 });
 
 // ===== BOTÕES DE VOLTAR =====
@@ -168,8 +168,8 @@ async function enviarMensagem() {
     areaMensagens.scrollTop = areaMensagens.scrollHeight;
     
     try {
-        // ✅ LINK CORRETO DO SEU SERVIDOR
-        const URL_SERVIDOR = "https://nicoluz-ia-servidor.onrender.com";
+        // ✅ LINK CORRIGIDO DO SEU SERVIDOR
+        const URL_SERVIDOR = "https://nicoluz-la-servidor.onrender.com";
         
         const resposta = await fetch(`${URL_SERVIDOR}/api/chat`, {
             method: 'POST',
