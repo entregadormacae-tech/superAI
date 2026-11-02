@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 :root {
@@ -48,15 +48,37 @@ body {
     text-align: center;
 }
 
-.logo-grande {
-    font-size: 64px;
-    margin-bottom: 24px;
+/* ===== LOGO BOREAL ===== */
+.logo-boreal {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 32px;
+    color: #007aff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tela-centro h1 {
-    font-size: 32px;
-    font-weight: 600;
+.logo-boreal svg {
+    width: 100%;
+    height: 100%;
+    animation: suave 3s ease-in-out infinite alternate;
+}
+
+@keyframes suave {
+    from { opacity: 0.8; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.03); }
+}
+
+.titulo-principal {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
 .subtitulo {
@@ -68,29 +90,31 @@ body {
 .botoes-inicio {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     width: 100%;
     max-width: 320px;
     margin-bottom: 48px;
 }
 
 .btn {
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: 15px 20px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .btn-principal {
-    background: var(--primaria);
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
     color: white;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
 }
 
 .btn-principal:active {
-    opacity: 0.8;
+    transform: scale(0.98);
+    opacity: 0.9;
 }
 
 .btn-secundario {
@@ -102,10 +126,12 @@ body {
     font-size: 14px;
     color: var(--texto-claro);
     margin-bottom: 8px;
+    line-height: 1.5;
 }
 
 .destaque-pro {
-    color: var(--primaria);
+    color: #007aff;
+    font-weight: 500;
 }
 
 /* ===== FORMULÁRIOS ===== */
@@ -140,11 +166,17 @@ body {
     gap: 16px;
 }
 
+.form-simples h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
 .form-simples input {
     width: 100%;
-    padding: 14px 16px;
+    padding: 15px 16px;
     border: 1px solid var(--borda);
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 16px;
     outline: none;
     transition: border-color 0.2s ease;
@@ -170,8 +202,8 @@ body {
     background: var(--fundo);
     width: 280px;
     height: 100%;
-    border-radius: 0 16px 16px 0;
-    padding: 20px;
+    border-radius: 0 20px 20px 0;
+    padding: 24px;
     overflow-y: auto;
     animation: deslizar 0.25s ease;
 }
@@ -190,8 +222,12 @@ body {
 }
 
 .cabecalho-menu h2 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .btn-fechar {
@@ -217,9 +253,9 @@ body {
 .item-menu {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 12px;
-    border-radius: 10px;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
     background: transparent;
     border: none;
     font-size: 16px;
@@ -230,11 +266,11 @@ body {
 }
 
 .item-menu:hover {
-    background: var(--borda);
+    background: rgba(0, 122, 255, 0.06);
 }
 
 .icone-menu {
-    font-size: 18px;
+    font-size: 20px;
     width: 24px;
     text-align: center;
 }
@@ -242,7 +278,7 @@ body {
 .divisor-menu {
     height: 1px;
     background: var(--borda);
-    margin: 12px 0;
+    margin: 16px 0;
 }
 
 .item-menu.sair {
@@ -287,7 +323,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    border-radius: 10px;
+    border-radius: 12px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -298,6 +334,11 @@ body {
 .opcao-radio:hover,
 .opcao-radio-com-botao:hover {
     background: rgba(0, 0, 0, 0.03);
+}
+
+.opcao-radio input,
+.opcao-radio-com-botao input {
+    margin-left: 10px;
 }
 
 .botoes-opcao {
@@ -324,7 +365,7 @@ body {
 }
 
 .icone-cadeado {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 /* ===== CHAT ===== */
@@ -356,8 +397,12 @@ body {
 }
 
 .titulo-app {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .btn-link-plano {
@@ -367,6 +412,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 6px 10px;
+    font-weight: 500;
 }
 
 .area-chat {
@@ -388,7 +434,7 @@ body {
 
 .mensagem.usuario {
     margin-left: auto;
-    background: var(--primaria);
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
     color: white;
     padding: 12px 16px;
     border-radius: 18px 18px 4px 18px;
@@ -402,7 +448,7 @@ body {
 .acoes-mensagem {
     display: flex;
     gap: 4px;
-    margin-top: 6px;
+    margin-top: 8px;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -413,14 +459,14 @@ body {
 }
 
 .btn-acao-mensagem {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     padding: 0;
     border: none;
     background: transparent;
     color: rgba(120, 120, 120, 0.5);
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -433,16 +479,16 @@ body {
 }
 
 .btn-acao-mensagem:hover {
-    background: rgba(120, 120, 120, 0.08);
-    color: rgba(60, 60, 60, 0.8);
+    background: rgba(0, 122, 255, 0.08);
+    color: #007aff;
 }
 
 /* ===== PREVIEW DE ARQUIVO ===== */
 .preview-imagem {
-    padding: 8px 16px;
+    padding: 10px 16px;
     background: var(--borda);
     margin: 0 16px 8px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -456,8 +502,8 @@ body {
 }
 
 .btn-remover {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: none;
     background: rgba(0, 0, 0, 0.1);
@@ -474,10 +520,10 @@ body {
     position: absolute;
     bottom: 80px;
     left: 16px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--sombra-forte);
+    border-radius: 20px;
+    box-shadow: 0 4px 24px var(--sombra-forte);
     padding: 8px 0;
     min-width: 180px;
     z-index: 100;
@@ -493,14 +539,14 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
+    padding: 14px 18px;
     cursor: pointer;
     transition: background 0.1s ease;
     font-size: 15px;
 }
 
 .opcao-flutuante:hover {
-    background: var(--borda);
+    background: rgba(0, 122, 255, 0.06);
 }
 
 .icone-opcao {
@@ -513,7 +559,7 @@ body {
 .barra-entrada {
     display: flex;
     align-items: flex-end;
-    gap: 8px;
+    gap: 10px;
     padding: 12px 16px 24px;
     border-top: 1px solid var(--borda);
     background: var(--fundo);
@@ -521,37 +567,38 @@ body {
 }
 
 .btn-icone {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
-    background: transparent;
+    background: var(--borda);
     font-size: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--texto-claro);
-    transition: background 0.15s ease;
+    transition: all 0.15s ease;
     flex-shrink: 0;
 }
 
 .btn-icone:hover {
-    background: var(--borda);
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--primaria);
 }
 
 .caixa-texto {
     flex: 1;
     background: var(--borda);
     border-radius: 22px;
-    padding: 10px 16px;
+    padding: 12px 18px;
 }
 
 .caixa-texto textarea {
     width: 100%;
     border: none;
     background: transparent;
-    font-size: 15px;
+    font-size: 16px;
     outline: none;
     resize: none;
     max-height: 80px;
@@ -559,11 +606,9 @@ body {
 }
 
 .btn-icone.enviar {
-    background: var(--primaria);
+    background: linear-gradient(135deg, #007aff, #5ac8fa);
     color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
 }
 
 /* ===== AVISO FLUTUANTE ===== */
@@ -574,8 +619,8 @@ body {
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.75);
     color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 24px;
+    border-radius: 24px;
     font-size: 14px;
     z-index: 9999;
     animation: fadeInOut 2s ease;
