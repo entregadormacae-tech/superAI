@@ -173,7 +173,7 @@ async function enviarMensagem() {
     areaMensagens.scrollTop = areaMensagens.scrollHeight;
     
     try {
-        // 👇 COLOCA SEU LINK DO SERVIDOR AQUI
+        // Link do servidor — JÁ ESTÁ CERTO! ✅
         const URL_SERVIDOR = "https://nicoluz-ia-servidor.onrender.com";
         
         const resposta = await fetch(`${URL_SERVIDOR}/api/chat`, {
@@ -188,18 +188,19 @@ async function enviarMensagem() {
         const dados = await resposta.json();
         
         // Remove o "escrevendo..."
-        document.getElementById(idTemp)?.remove();
+        const tempEl = document.getElementById(idTemp);
+        if (tempEl) tempEl.remove();
         
         // Mostra a resposta da IA
         adicionarMensagem(dados.resposta || "Sem resposta disponível");
         
     } catch (erro) {
-        document.getElementById(idTemp)?.remove();
+        const tempEl = document.getElementById(idTemp);
+        if (tempEl) tempEl.remove();
         adicionarMensagem("🔌 Erro de conexão. Tente novamente em instantes.");
         console.error(erro);
     }
 }
-
 
 // ===== BOTÃO MICROFONE =====
 document.getElementById('btn-microfone').addEventListener('click', function() {
