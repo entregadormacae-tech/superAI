@@ -62,12 +62,39 @@ body {
 .logo-boreal svg {
     width: 100%;
     height: 100%;
-    animation: suave 3s ease-in-out infinite alternate;
+    animation:
+        flutuar 4s ease-in-out infinite,
+        pulsar-centro 2.5s ease-in-out infinite;
 }
 
-@keyframes suave {
-    from { opacity: 0.8; transform: scale(1); }
-    to { opacity: 1; transform: scale(1.03); }
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-4px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(4px) rotate(-1deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes pulsar-centro {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }
 
 .titulo-principal {
