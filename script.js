@@ -169,7 +169,7 @@ async function enviarMensagem() {
     
     try {
         // ✅ LINK CORRIGIDO DO SEU SERVIDOR
-        const URL_SERVIDOR = "https://nicoluz-la-servidor.onrender.com";
+        const URL_SERVIDOR = "https://nicoluz-ia-servidor.onrender.com";
         
         const resposta = await fetch(`${URL_SERVIDOR}/api/chat`, {
             method: 'POST',
