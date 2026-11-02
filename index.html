@@ -4,208 +4,313 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <title>SuperAI — Seu Assistente Inteligente</title>
+    <title>SuperAI</title>
 </head>
 <body>
+    <!-- Menu Lateral -->
+    <div id="menu-lateral" class="menu-overlay escondido">
+        <div class="menu-conteudo">
+            <div class="cabecalho-menu">
+                <h2>SuperAI</h2>
+                <button id="fechar-menu" class="btn-fechar">✕</button>
+            </div>
+            <nav class="itens-menu">
+                <button class="item-menu" id="ir-temas">
+                    <span class="icone-menu">🎨</span>
+                    <span>Personalizar Tema</span>
+                </button>
+                <button class="item-menu" id="ir-vozes">
+                    <span class="icone-menu">🎙️</span>
+                    <span>Voz da IA</span>
+                </button>
+                <button class="item-menu" id="ir-preferencias">
+                    <span class="icone-menu">⚙️</span>
+                    <span>Preferências de conversa</span>
+                </button>
+                <div class="divisor-menu"></div>
+                <button class="item-menu" id="ir-planos">
+                    <span class="icone-menu">⚡</span>
+                    <span>Ver planos</span>
+                </button>
+                <button class="item-menu" id="ir-conta">
+                    <span class="icone-menu">👤</span>
+                    <span>Sua conta</span>
+                </button>
+                <div class="divisor-menu"></div>
+                <button class="item-menu sair" id="btn-sair">
+                    <span class="icone-menu">🚪</span>
+                    <span>Sair</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Tela de Boas-vindas -->
         <div id="tela-inicio" class="tela ativa">
-            <div class="logo">
-                <div class="icone-logo">🤖</div>
+            <div class="tela-centro">
+                <div class="logo-grande">🤖</div>
                 <h1>SuperAI</h1>
                 <p class="subtitulo">Seu assistente inteligente completo</p>
-            </div>
-            
-            <div class="botoes-inicio">
-                <button id="btn-entrar" class="btn btn-principal">🔐 Entrar</button>
-                <button id="btn-cadastrar" class="btn btn-secundario">✨ Criar Conta</button>
-            </div>
-
-            <div class="info-planos">
-                <div class="plano-card gratuito">
-                    <h3>🌍 Plano Gratuito</h3>
-                    <p>💬 50 mensagens por dia</p>
-                    <p>🖼️ Imagens e vídeos com limite</p>
-                    <p>🎨 5 temas para escolher</p>
-                    <p class="destaque">✅ Sem anúncios</p>
+                
+                <div class="botoes-inicio">
+                    <button id="btn-entrar" class="btn btn-principal">Entrar</button>
+                    <button id="btn-cadastrar" class="btn btn-secundario">Criar conta</button>
                 </div>
-                <div class="plano-card pro">
-                    <h3>⚡ Plano Pro</h3>
-                    <p>💬 Mensagens ilimitadas</p>
-                    <p>🎬 Geração de imagens e vídeos</p>
-                    <p>🎨 15 temas exclusivos</p>
-                    <p>🚀 Prioridade de resposta</p>
+
+                <div class="resumo-planos">
+                    <p class="texto-pequeno"><strong>Gratuito:</strong> 50 mensagens/dia • 5 temas • 4 vozes • sem anúncios ✅</p>
+                    <p class="texto-pequeno destaque-pro"><strong>Pro:</strong> Ilimitado • 15 temas • 10 vozes + criar sua voz • imagens, arquivos e vídeos ⚡</p>
                 </div>
             </div>
         </div>
 
         <!-- Tela de Login -->
         <div id="tela-login" class="tela">
-            <button class="btn-voltar">← Voltar</button>
-            <h2>🔐 Entrar</h2>
-            <form id="form-login">
-                <input type="email" id="login-email" placeholder="Seu e-mail" required>
-                <input type="password" id="login-senha" placeholder="Sua senha" required>
-                <button type="submit" class="btn btn-principal">Acessar</button>
-            </form>
+            <div class="cabecalho-simples">
+                <button class="btn-voltar-simples">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="tela-centro">
+                <h2>Entrar</h2>
+                <form id="form-login" class="form-simples">
+                    <input type="email" id="login-email" placeholder="Seu e-mail" required>
+                    <input type="password" id="login-senha" placeholder="Sua senha" required>
+                    <button type="submit" class="btn btn-principal">Continuar</button>
+                </form>
+            </div>
         </div>
 
         <!-- Tela de Cadastro -->
         <div id="tela-cadastro" class="tela">
-            <button class="btn-voltar">← Voltar</button>
-            <h2>✨ Criar Conta</h2>
-            <form id="form-cadastro">
-                <input type="text" id="cadastro-nome" placeholder="Seu nome completo" required>
-                <input type="email" id="cadastro-email" placeholder="Seu melhor e-mail" required>
-                <input type="password" id="cadastro-senha" placeholder="Crie uma senha segura" required>
-                <button type="submit" class="btn btn-principal">Começar agora</button>
-            </form>
+            <div class="cabecalho-simples">
+                <button class="btn-voltar-simples">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="tela-centro">
+                <h2>Criar conta</h2>
+                <form id="form-cadastro" class="form-simples">
+                    <input type="text" id="cadastro-nome" placeholder="Seu nome" required>
+                    <input type="email" id="cadastro-email" placeholder="Seu e-mail" required>
+                    <input type="password" id="cadastro-senha" placeholder="Crie uma senha" required>
+                    <button type="submit" class="btn btn-principal">Começar</button>
+                </form>
+            </div>
         </div>
 
-        <!-- Tela de Escolha de Temas -->
+        <!-- Tela de Temas -->
         <div id="tela-temas" class="tela">
-            <div class="cabecalho-tela">
-                <button class="btn-voltar">← Voltar</button>
-                <h2>🎨 Personalizar Tema</h2>
+            <div class="cabecalho-padrao">
+                <button class="btn-voltar-simples voltar-config">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>🎨 Tema</h2>
                 <div></div>
             </div>
-            
-            <div class="secao-temas">
-                <h3>🌍 Temas Disponíveis</h3>
-                <div class="grade-temas">
-                    <div class="tema-item" data-tema="escuro-suave">
-                        <div class="amostra-tema escuro-suave"></div>
-                        <span>🌙 Escuro Suave</span>
-                    </div>
-                    <div class="tema-item" data-tema="claro-limpo">
-                        <div class="amostra-tema claro-limpo"></div>
-                        <span>☀️ Claro Limpo</span>
-                    </div>
-                    <div class="tema-item" data-tema="lilas-moderno">
-                        <div class="amostra-tema lilas-moderno"></div>
-                        <span>💜 Lilás Moderno</span>
-                    </div>
-                    <div class="tema-item" data-tema="verde-natureza">
-                        <div class="amostra-tema verde-natureza"></div>
-                        <span>💚 Verde Natureza</span>
-                    </div>
-                    <div class="tema-item" data-tema="azul-confianca">
-                        <div class="amostra-tema azul-confianca"></div>
-                        <span>💙 Azul Confiança</span>
-                    </div>
+            <div class="lista-opcoes">
+                <p class="categoria-titulo">Disponíveis</p>
+                <label class="opcao-radio">
+                    <span>🌙 Escuro Suave</span>
+                    <input type="radio" name="tema" value="escuro-suave">
+                </label>
+                <label class="opcao-radio">
+                    <span>☀️ Claro Limpo</span>
+                    <input type="radio" name="tema" value="claro-limpo" checked>
+                </label>
+                <label class="opcao-radio">
+                    <span>💜 Lilás Moderno</span>
+                    <input type="radio" name="tema" value="lilas-moderno">
+                </label>
+                <label class="opcao-radio">
+                    <span>💚 Verde Natureza</span>
+                    <input type="radio" name="tema" value="verde-natureza">
+                </label>
+                <label class="opcao-radio">
+                    <span>💙 Azul Confiança</span>
+                    <input type="radio" name="tema" value="azul-confianca">
+                </label>
+                
+                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
+                <div class="opcao-bloqueada">
+                    <span>🔥 Moda Escura 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌸 Rosa Elegante 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌊 Oceano Profundo 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🍂 Outono 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>❄️ Gelo Cristal 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌌 Galáxia 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌅 Pôr do Sol 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌲 Floresta 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🧊 Ciano Futurista 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🏔️ Pedra Cinza 🔒</span>
                 </div>
             </div>
+        </div>
 
-            <div class="secao-temas pro-temas">
-                <h3>⭐ Temas Exclusivos — Plano Pro</h3>
-                <p class="aviso-pro">Desbloqueie esses temas e muito mais assinando o Pro ✨</p>
-                <div class="grade-temas">
-                    <div class="tema-item bloqueado" data-tema="moda-escura">
-                        <div class="amostra-tema moda-escura"></div>
-                        <span>🔥 Moda Escura 🔒</span>
+        <!-- Tela de Vozes -->
+        <div id="tela-vozes" class="tela">
+            <div class="cabecalho-padrao">
+                <button class="btn-voltar-simples voltar-config">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>🎙️ Voz da IA</h2>
+                <div></div>
+            </div>
+            <div class="lista-opcoes">
+                <p class="categoria-titulo">Disponíveis</p>
+                <label class="opcao-radio-com-botao">
+                    <span>😌 Calma e Suave</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <input type="radio" name="voz" value="calma" checked>
                     </div>
-                    <div class="tema-item bloqueado" data-tema="rosa-elegante">
-                        <div class="amostra-tema rosa-elegante"></div>
-                        <span>🌸 Rosa Elegante 🔒</span>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>😊 Amigável e Animada</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <input type="radio" name="voz" value="amigavel">
                     </div>
-                    <div class="tema-item bloqueado" data-tema="oceano">
-                        <div class="amostra-tema oceano"></div>
-                        <span>🌊 Oceano Profundo 🔒</span>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>👔 Clara e Profissional</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <input type="radio" name="voz" value="profissional">
                     </div>
-                    <div class="tema-item bloqueado" data-tema="outono">
-                        <div class="amostra-tema outono"></div>
-                        <span>🍂 Outono 🔒</span>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>🎙️ Suave Masculina</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <input type="radio" name="voz" value="masculina">
                     </div>
-                    <div class="tema-item bloqueado" data-tema="gelo">
-                        <div class="amostra-tema gelo"></div>
-                        <span>❄️ Gelo Cristal 🔒</span>
-                    </div>
-                    <div class="tema-item bloqueado" data-tema="galaxia">
-                        <div class="amostra-tema galaxia"></div>
-                        <span>🌌 Galáxia 🔒</span>
-                    </div>
-                    <div class="tema-item bloqueado" data-tema="por-do-sol">
-                        <div class="amostra-tema por-do-sol"></div>
-                        <span>🌅 Pôr do Sol 🔒</span>
-                    </div>
-                    <div class="tema-item bloqueado" data-tema="floresta">
-                        <div class="amostra-tema floresta"></div>
-                        <span>🌲 Floresta 🔒</span>
-                    </div>
-                    <div class="tema-item bloqueado" data-tema="ciano-futurista">
-                        <div class="amostra-tema ciano-futurista"></div>
-                        <span>🧊 Ciano Futurista 🔒</span>
-                    </div>
-                    <div class="tema-item bloqueado" data-tema="pedra-cinza">
-                        <div class="amostra-tema pedra-cinza"></div>
-                        <span>🏔️ Pedra Cinza 🔒</span>
-                    </div>
+                </label>
+                
+                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
+                <div class="opcao-bloqueada">
+                    <span>🎵 Energética 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌷 Doce e Gentil 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>📖 Narradora 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌍 Internacional 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🔮 Profunda 🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>⚡ Rápida e Direta 🔒</span>
+                </div>
+                <div class="opcao-bloqueada criar-voz">
+                    <span>🎤 Criar minha própria voz 🔒</span>
                 </div>
             </div>
         </div>
 
         <!-- Tela Principal / Chat -->
         <div id="tela-chat" class="tela">
-            <div class="cabecalho-chat">
-                <button id="btn-abrir-temas" class="btn-tema-btn" title="Mudar tema">🎨</button>
-                <h2>SuperAI</h2>
-                <div class="info-usuario">
-                    <span id="nome-usuario">Usuário</span>
-                    <span id="contador-mensagens" class="badge">50/50</span>
-                    <button id="btn-plano-pro" class="btn-pequeno">⚡ Assinar Pro</button>
-                    <button id="btn-sair" class="btn-sair">Sair</button>
-                </div>
+            <!-- Cabeçalho do chat -->
+            <div class="cabecalho-chat-limpo">
+                <button id="btn-abrir-menu" class="btn-menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+                <h1 class="titulo-app">SuperAI</h1>
+                <button id="btn-ver-planos" class="btn-link-plano">⚡ Ver planos</button>
             </div>
 
-            <!-- Pré-visualização de imagem -->
-            <div id="preview-imagem" class="preview-imagem escondido">
-                <img id="img-preview" src="" alt="Pré-visualização da imagem">
-                <button id="btn-remover-imagem" class="btn-remover" title="Remover">✕</button>
-            </div>
-
-            <div id="area-mensagens" class="area-mensagens">
-                <div class="mensagem ia">
-                    <div class="avatar-mensagem">🤖</div>
-                    <div class="conteudo-mensagem">
-                        <p>Olá! Eu sou a SuperAI! ✨</p>
-                        <p>Como posso ajudar você hoje?</p>
+            <!-- Área de mensagens -->
+            <div id="area-mensagens" class="area-chat">
+                <div class="mensagem ia inicio">
+                    <p>Olá! Como posso ajudar você hoje? ✨</p>
+                    <div class="acoes-mensagem">
+                        <button class="btn-acao-mensagem" data-acao="copiar" title="Copiar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                        <button class="btn-acao-mensagem" data-acao="ouvir" title="Ouvir resposta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                        </button>
+                        <button class="btn-acao-mensagem" data-acao="compartilhar" title="Compartilhar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="18" cy="5" r="3"/>
+                                <circle cx="6" cy="12" r="3"/>
+                                <circle cx="18" cy="19" r="3"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="botoes-funcoes">
-                <button class="btn-funcao ativo" data-funcao="texto">💬 Conversar</button>
-                <button class="btn-funcao" data-funcao="imagem">🖼️ Criar Imagem</button>
-                <button class="btn-funcao" data-funcao="video">🎬 Criar Vídeo</button>
+            <!-- Pré-visualização de arquivo -->
+            <div id="preview-item" class="preview-imagem escondido">
+                <div id="preview-conteudo"></div>
+                <button id="btn-remover-preview" class="btn-remover">✕</button>
             </div>
 
-            <div class="entrada-mensagem">
+            <!-- Menu flutuante do botão + -->
+            <div id="menu-mais" class="menu-flutuante escondido">
+                <div class="opcao-flutuante" id="opcao-camera">
+                    <span class="icone-opcao">📷</span>
+                    <span>Câmera</span>
+                </div>
+                <div class="opcao-flutuante" id="opcao-fotos">
+                    <span class="icone-opcao">🖼️</span>
+                    <span>Fotos</span>
+                </div>
+                <div class="opcao-flutuante" id="opcao-arquivos">
+                    <span class="icone-opcao">📄</span>
+                    <span>Arquivos</span>
+                </div>
+                <div class="opcao-flutuante" id="opcao-pensar">
+                    <span class="icone-opcao">💭</span>
+                    <span>Pensar mais</span>
+                </div>
+            </div>
+
+            <!-- Barra inferior de entrada -->
+            <div class="barra-entrada">
                 <input type="file" id="input-camera" accept="image/*" capture="environment" class="escondido">
-                <input type="file" id="input-galeria" accept="image/*" class="escondido">
-                
-                <button id="btn-camera" class="btn-acao" title="Tirar foto com a câmera">📷</button>
-                <button id="btn-galeria" class="btn-acao" title="Escolher da galeria">🖼️</button>
-                
-                <textarea id="entrada-texto" placeholder="Digite sua mensagem ou envie uma imagem..."></textarea>
-                
-                <button id="btn-microfone" class="btn-acao" title="Falar com a voz">🎤</button>
-                <button id="btn-enviar" class="btn-enviar" title="Enviar mensagem">➤</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Aviso de tema Pro -->
-    <div id="aviso-tema-pro" class="modal escondido">
-        <div class="modal-conteudo">
-            <h3>⭐ Tema Exclusivo do Plano Pro</h3>
-            <p>Esse tema é um dos 10 exclusivos do plano Pro. Assine agora e desbloqueie todos os temas, mensagens ilimitadas e muito mais! ✨</p>
-            <div class="botoes-modal">
-                <button id="btn-fechar-aviso-tema" class="btn-secundario">Talvez depois</button>
-                <button id="btn-assinar-pelo-tema" class="btn-principal">⚡ Assinar Agora</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <input type="file" id="input-fotos" accept
