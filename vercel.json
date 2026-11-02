@@ -1,0 +1,5 @@
+{
+  "buildCommand": "echo 'Build concluído'",
+  "outputDirectory": ".",
+  "framework": null
+}
