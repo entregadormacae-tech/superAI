@@ -7,6 +7,7 @@
     <title>Nicoluz IA</title>
 </head>
 <body>
+    <!-- Menu Lateral -->
     <div id="menu-lateral" class="menu-overlay escondido">
         <div class="menu-conteudo">
             <div class="cabecalho-menu">
@@ -14,70 +15,242 @@
                 <button id="fechar-menu" class="btn-fechar">✕</button>
             </div>
             <nav class="itens-menu">
-                <button class="item-menu" id="ir-temas"><span class="icone-menu">🎨</span><span>Personalizar Tema</span></button>
-                <button class="item-menu" id="ir-vozes"><span class="icone-menu">🎙️</span><span>Voz da IA</span></button>
-                <button class="item-menu" id="ir-preferencias"><span class="icone-menu">⚙️</span><span>Preferências de conversa</span></button>
+                <button class="item-menu" id="ir-temas">
+                    <span class="icone-menu">🎨</span>
+                    <span>Personalizar Tema</span>
+                </button>
+                <button class="item-menu" id="ir-vozes">
+                    <span class="icone-menu">🎙️</span>
+                    <span>Voz da IA</span>
+                </button>
+                <button class="item-menu" id="ir-preferencias">
+                    <span class="icone-menu">⚙️</span>
+                    <span>Preferências de conversa</span>
+                </button>
                 <div class="divisor-menu"></div>
-                <button class="item-menu" id="ir-planos"><span class="icone-menu">⚡</span><span>Ver planos</span></button>
-                <button class="item-menu" id="ir-conta"><span class="icone-menu">👤</span><span>Sua conta</span></button>
+                <button class="item-menu" id="ir-planos">
+                    <span class="icone-menu">⚡</span>
+                    <span>Ver planos</span>
+                </button>
+                <button class="item-menu" id="ir-conta">
+                    <span class="icone-menu">👤</span>
+                    <span>Sua conta</span>
+                </button>
                 <div class="divisor-menu"></div>
-                <button class="item-menu sair" id="btn-sair"><span class="icone-menu">🚪</span><span>Sair</span></button>
+                <button class="item-menu sair" id="btn-sair">
+                    <span class="icone-menu">🚪</span>
+                    <span>Sair</span>
+                </button>
             </nav>
         </div>
     </div>
 
     <div class="app-container">
+        <!-- Tela de Boas-vindas -->
         <div id="tela-inicio" class="tela ativa">
             <div class="tela-centro">
                 <div class="logo-boreal">
-                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="globoGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.9"/>
-                                <stop offset="40%" stop-color="#22D3EE" stop-opacity="0.8"/>
-                                <stop offset="70%" stop-color="#3B82F6" stop-opacity="0.7"/>
-                                <stop offset="100%" stop-color="#1E40AF" stop-opacity="0.5"/>
-                            </radialGradient>
-                            <linearGradient id="letraNGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFD700"/>
-                                <stop offset="30%" stop-color="#FFA500"/>
-                                <stop offset="60%" stop-color="#9932EB"/>
-                                <stop offset="100%" stop-color="#4B00E0"/>
-                            </linearGradient>
-                            <filter id="brilhoSuave">
-                                <feGaussianBlur stdDeviation="2" result="blur"/>
-                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                            </filter>
-                            <linearGradient id="coroaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFE066"/>
-                                <stop offset="50%" stop-color="#FFB800"/>
-                                <stop offset="100%" stop-color="#CC8800"/>
-                            </linearGradient>
-                        </defs>
-                        <circle cx="60" cy="65" r="45" fill="url(#globoGrad)" opacity="0.85"/>
-                        <ellipse cx="60" cy="65" rx="55" ry="20" stroke="#FFD700" stroke-width="1.2" fill="none" opacity="0.4"/>
-                        <ellipse cx="60" cy="65" rx="52" ry="38" stroke="#9932EB" stroke-width="0.8" fill="none" opacity="0.3"/>
-                        <polygon points="25,30 27,35 32,35 28,39 30,44 25,40 20,44 22,39 17,35 22,35" fill="#FFD700" opacity="0.8"/>
-                        <polygon points="95,35 96,38 99,38 97,41 98,45 95,42 92,45 93,41 90,38 93,38" fill="#FFFFFF" opacity="0.7"/>
-                        <polygon points="100,75 101,77 103,77 102,80 102,83 100,81 98,83 98,80 96,77 98,77" fill="#FFD700" opacity="0.6"/>
-                        <polygon points="20,80 21,82 23,82 22,85 22,88 20,86 18,88 18,85 16,82 18,82" fill="#FFFFFF" opacity="0.5"/>
-                        <path d="M40 35 L45 25 L52 33 L60 22 L68 33 L75 25 L80 35 Z" fill="url(#coroaGrad)" filter="url(#brilhoSuave)" opacity="0.95"/>
-                        <g filter="url(#brilhoSuave)">
-                            <path d="M40 78 L40 38 L50 38 L50 65 L70 38 L80 38 L80 78 L70 78 L70 52 L50 78 L40 78 Z" 
-                                  fill="url(#letraNGrad)" opacity="0.95"/>
-                        </g>
-                    </svg>
+                    <img src="logo-nicoluz.png" alt="Nicoluz IA" style="width: 140px; height: auto;">
                 </div>
                 <h1 class="titulo-principal">Nicoluz IA</h1>
                 <p class="subtitulo">Seu assistente inteligente completo</p>
+                
                 <div class="botoes-inicio">
                     <button id="btn-entrar" class="btn btn-principal">Entrar</button>
                     <button id="btn-cadastrar" class="btn btn-secundario">Criar conta</button>
                 </div>
-                <p class="texto-pequeno" style="margin-top:20px;"><strong>Gratuito</strong> • 50 mensagens/dia • sem anúncios ✅</p>
+
+                <div class="resumo-planos">
+                    <p class="texto-pequeno"><strong>Gratuito</strong> • 50 mensagens/dia • sem anúncios ✅</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Login -->
+        <div id="tela-login" class="tela">
+            <div class="cabecalho-simples">
+                <button class="btn-voltar-simples" id="voltar-inicio-login">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="tela-centro">
+                <h2>Entrar</h2>
+                <form id="form-login" class="form-simples">
+                    <input type="email" id="login-email" placeholder="Seu e-mail" required>
+                    <input type="password" id="login-senha" placeholder="Sua senha" required>
+                    <button type="submit" class="btn btn-principal">Continuar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div id="tela-cadastro" class="tela">
+            <div class="cabecalho-simples">
+                <button class="btn-voltar-simples" id="voltar-inicio-cadastro">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="tela-centro">
+                <h2>Criar conta</h2>
+                <form id="form-cadastro" class="form-simples">
+                    <input type="text" id="cadastro-nome" placeholder="Seu nome" required>
+                    <input type="email" id="cadastro-email" placeholder="Seu e-mail" required>
+                    <input type="password" id="cadastro-senha" placeholder="Crie uma senha" required>
+                    <button type="submit" class="btn btn-principal">Começar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tela de Temas -->
+        <div id="tela-temas" class="tela">
+            <div class="cabecalho-padrao">
+                <button class="btn-voltar-simples voltar-config" id="voltar-chat-temas">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>🎨 Tema</h2>
+                <div></div>
+            </div>
+            <div class="lista-opcoes">
+                <p class="categoria-titulo">Disponíveis</p>
+                <label class="opcao-radio">
+                    <span>🌙 Escuro Suave</span>
+                    <input type="radio" name="tema" value="escuro-suave">
+                </label>
+                <label class="opcao-radio">
+                    <span>☀️ Claro Limpo</span>
+                    <input type="radio" name="tema" value="claro-limpo" checked>
+                </label>
+                <label class="opcao-radio">
+                    <span>💜 Lilás Moderno</span>
+                    <input type="radio" name="tema" value="lilas-moderno">
+                </label>
+                <label class="opcao-radio">
+                    <span>💚 Verde Natureza</span>
+                    <input type="radio" name="tema" value="verde-natureza">
+                </label>
+                <label class="opcao-radio">
+                    <span>💙 Azul Confiança</span>
+                    <input type="radio" name="tema" value="azul-confianca">
+                </label>
+                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
+                <div class="opcao-bloqueada">
+                    <span>🔥 Moda Escura</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌸 Rosa Elegante</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌊 Oceano Profundo</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>❄️ Gelo Cristal</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Vozes -->
+        <div id="tela-vozes" class="tela">
+            <div class="cabecalho-padrao">
+                <button class="btn-voltar-simples voltar-config" id="voltar-chat-vozes">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>🎙️ Voz da IA</h2>
+                <div></div>
+            </div>
+            <div class="lista-opcoes">
+                <p class="categoria-titulo">Disponíveis</p>
+                <label class="opcao-radio-com-botao">
+                    <span>😌 Calma e Suave</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
+                        <input type="radio" name="voz" value="calma" checked>
+                    </div>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>😊 Amigável e Animada</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
+                        <input type="radio" name="voz" value="amigavel">
+                    </div>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>👔 Clara e Profissional</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
+                        <input type="radio" name="voz" value="profissional">
+                    </div>
+                </label>
+                <label class="opcao-radio-com-botao">
+                    <span>🎙️ Suave Masculina</span>
+                    <div class="botoes-opcao">
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
+                        <input type="radio" name="voz" value="masculina">
+                    </div>
+                </label>
+                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
+                <div class="opcao-bloqueada">
+                    <span>🎵 Energética</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🌷 Doce e Gentil</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>📖 Narradora</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+                <div class="opcao-bloqueada">
+                    <span>🎤 Criar minha própria voz</span>
+                    <span class="icone-cadeado">🔒</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela Principal / Chat -->
+        <div id="tela-chat" class="tela">
+            <div class="cabecalho-chat-limpo">
+                <button id="btn-abrir-menu" class="btn-menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+                <h1 class="titulo-app">Nicoluz IA</h1>
+                <button id="btn-ver-planos" class="btn-link-plano">Ver planos</button>
+            </div>
+
+            <div id="area-mensagens" class="area-chat">
+                <div class="mensagem ia inicio">
+                    <p>Olá! Bem-vindo ao Nicoluz IA! Como posso ajudar você hoje? ✨</p>
+                    <div class="acoes-mensagem">
+                        <button class="btn-acao-mensagem" data-acao="copiar" title="Copiar">📋</button>
+                        <button class="btn-acao-mensagem" data-acao="ouvir" title="Ouvir resposta">🔊</button>
+                        <button class="btn-acao-mensagem" data-acao="compartilhar" title="Compartilhar">↗️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entrada-mensagem">
+                <input type="text" id="campo-mensagem" placeholder="Digite sua mensagem..." autocomplete="off">
+                <button id="btn-enviar" class="btn-enviar">➤</button>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
