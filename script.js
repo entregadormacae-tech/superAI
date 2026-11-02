@@ -1,70 +1,70 @@
-const API_URL = '/api/chat';
-let mensagensRestantes = 50;
+const API_URL = "https://superai-uhzg.onrender.com";
 
-function abrirInicio() {
-    document.getElementById('tela-inicio').classList.add('ativa');
-    document.getElementById('tela-chat').classList.remove('ativa');
-    fecharMenu();
-}
-
-function abrirChat() {
-    document.getElementById('tela-inicio').classList.remove('ativa');
-    document.getElementById('tela-chat').classList.add('ativa');
-}
-
-function abrirMenu() {
-    document.getElementById('menu-lateral').classList.add('aberto');
-}
-
-function fecharMenu() {
-    document.getElementById('menu-lateral').classList.remove('aberto');
-}
-
-function adicionarMensagem(texto, ehUsuario = false) {
-    const area = document.getElementById('area-mensagens');
-    const div = document.createElement('div');
-    div.className = `mensagem ${ehUsuario ? 'usuario' : 'ia'}`;
+async function enviar() {
+    const texto = document.getElementById('campo-texto').value;
+    if (!texto.trim()) return;
     
-    const avatar = ehUsuario ? '👤' : '🤖';
-    div.innerHTML = `
-        <div class="avatar">${avatar}</div>
-        <div class="texto">${texto}</div>
-    `;
-    
-    area.appendChild(div);
-    area.scrollTop = area.scrollHeight;
-}
-
-async function enviarMensagem() {
-    const entrada = document.getElementById('entrada-mensagem');
-    const texto = entrada.value.trim();
-    
-    if (!texto) return;
-    
-    if (mensagensRestantes <= 0) {
-        adicionarMensagem('Limite diário atingido! Volte amanhã ou faça upgrade para o plano Pro.', false);
-        return;
-    }
+    const caixa = document.getElementById('caixa-mensagens');
     
     // Mostra mensagem do usuário
-    adicionarMensagem(texto, true);
-    entrada.value = '';
+    caixa.innerHTML += `
+        <div class="mensagem">
+            <div class="icone">👤</div>
+            <div class="texto"><p>${texto}</p></div>
+        </div>
+    `;
+    document.getElementById('campo-texto').value = '';
+    caixa.scrollTop = caixa.scrollHeight;
     
-    // Atualiza contador
-    mensagensRestantes--;
-    document.getElementById('contador').textContent = mensagensRestantes;
+    // Mostra "pensando..."
+    const idTemp = 'temp-' + Date.now();
+    caixa.innerHTML += `
+        <div id="${idTemp}" class="mensagem ia">
+            <div class="icone">🤖</div>
+            <div class="texto"><p>Pensando... 🤔</p></div>
+        </div>
+    `;
+    caixa.scrollTop = caixa.scrollHeight;
     
-    // Resposta temporária
-    setTimeout(() => {
-        adicionarMensagem('Recebi sua mensagem! Conectando com a IA... 🤖\n\nIsso é só uma prévia. Em breve a IA real responderá aqui! ✨');
-    }, 600);
+    // Envia para a IA
+    try {
+        const resposta = await fetch(`${API_URL}/api/mensagem`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ mensagem: texto })
+        });
+        
+        const dados = await resposta.json();
+        document.getElementById(idTemp).remove();
+        
+        caixa.innerHTML += `
+            <div class="mensagem ia">
+                <div class="icone">🤖</div>
+                <div class="texto"><p>${dados.resposta.replace(/\n/g, '<br>')}</p></div>
+            </div>
+        `;
+        caixa.scrollTop = caixa.scrollHeight;
+        
+    } catch (erro) {
+        document.getElementById(idTemp).remove();
+        caixa.innerHTML += `
+            <div class="mensagem ia">
+                <div class="icone">🤖</div>
+                <div class="texto"><p>⚠️ Erro de conexão. Verifique o servidor no Render.</p></div>
+            </div>
+        `;
+        caixa.scrollTop = caixa.scrollHeight;
+    }
 }
 
-// Fecha menu ao clicar fora
-document.addEventListener('click', (e) => {
-    const menu = document.getElementById('menu-lateral');
-    const botao = e.target.closest('.btn-menu');
-    if (!menu.contains(e.target) && !botao && menu.classList.contains('aberto')) {
-        fecharMenu();
-    }
+function usarMicrofone() {
+    alert('🎤 Microfone — Fale agora!');
+}
+
+document.getElementById('anexo-imagem').addEventListener('change', function(e) {
+    if (e.target.files[0]) alert('🖼️ Imagem: ' + e.target.files[0].name);
+});
+
+document.getElementById('anexo-arquivo').addEventListener('change', function(e) {
+    if (e.target.files[0]) alert('📎 Arquivo: ' + e.target.files[0].name);
 });
