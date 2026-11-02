@@ -20,7 +20,8 @@ class Mensagem(BaseModel):
     texto: str
     historico: list = []
 
-api_key = os.getenv("OPENAI_API_KEY")
+# ✅ Agora usa a CHAVE DA GOOGLE
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
 @app.get("/")
 def home():
@@ -28,38 +29,49 @@ def home():
 
 @app.post("/api/chat")
 def chat(mensagem: Mensagem):
-    if not api_key:
-        return {"resposta": "⚠️ Chave da OpenAI não configurada!"}
+    if not google_api_key:
+        # ✅ Mensagem correta agora!
+        return {"resposta": "⚠️ Chave da Google não configurada!"}
     
     try:
-        headers = {
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        }
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={google_api_key}"
         
         dados = {
-            "model": "gpt-3.5-turbo",
-            "messages": [
-                {"role": "system", "content": "Você é a Nicoluz IA, uma assistente amigável e prestativa. Responda de forma clara e natural em português."},
-                *mensagem.historico,
-                {"role": "user", "content": mensagem.texto}
+            "contents": [
+                {
+                    "parts": [
+                        {"text": "Você é a Nicoluz IA, uma assistente amigável e prestativa. Responda de forma clara e natural em português."}
+                    ]
+                },
+                *[
+                    {"parts": [{"text": msg["text"]}]} 
+                    for msg in mensagem.historico
+                ],
+                {
+                    "parts": [{"text": mensagem.texto}]
+                }
             ],
-            "temperature": 0.7
+            "generationConfig": {
+                "temperature": 0.7
+            }
         }
         
         resposta = requests.post(
-            "https://api.openai.com/v1/chat/completions",
-            headers=headers,
+            url,
+            headers={"Content-Type": "application/json"},
             json=dados,
             timeout=30
         )
         
         if resposta.status_code == 200:
             resultado = resposta.json()
-            texto_resposta = resultado["choices"][0]["message"]["content"]
-            return {"resposta": texto_resposta}
+            try:
+                texto_resposta = resultado["candidates"][0]["content"]["parts"][0]["text"]
+                return {"resposta": texto_resposta}
+            except:
+                return {"resposta": "⚠️ Não consegui ler a resposta da IA."}
         else:
-            return {"resposta": f"❌ Erro: {resposta.status_code} — Verifique sua chave da OpenAI."}
+            return {"resposta": f"❌ Erro: {resposta.status_code} — Verifique sua chave da Google."}
     
     except Exception as e:
         return {"resposta": f"⚠️ Erro de conexão: {str(e)}"}
