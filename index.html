@@ -50,7 +50,7 @@
         <div id="tela-inicio" class="tela ativa">
             <div class="tela-centro">
                 <div class="logo-boreal">
-                    <img src="logo-nicoluz.png" alt="Nicoluz IA" style="width: 140px; height: auto;">
+                    <img src="logo-nicoluz-apenas-simbolo-transparente-final.png" alt="Nicoluz IA" style="width: 140px; height: auto;">
                 </div>
                 <h1 class="titulo-principal">Nicoluz IA</h1>
                 <p class="subtitulo">Seu assistente inteligente completo</p>
@@ -59,193 +59,117 @@
                     <button id="btn-entrar" class="btn btn-principal">Entrar</button>
                     <button id="btn-cadastrar" class="btn btn-secundario">Criar conta</button>
                 </div>
-
-                <div class="resumo-planos">
-                    <p class="texto-pequeno"><strong>Gratuito</strong> • 50 mensagens/dia • sem anúncios ✅</p>
-                </div>
+                <p class="texto-inferior">Gratuito • 50 mensagens/dia • sem anúncios ✅</p>
             </div>
         </div>
 
         <!-- Tela de Login -->
         <div id="tela-login" class="tela">
-            <div class="cabecalho-simples">
-                <button class="btn-voltar-simples" id="voltar-inicio-login">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
+            <div class="cabecalho-tela-interna">
+                <button class="btn-voltar" id="voltar-login">← Voltar</button>
             </div>
-            <div class="tela-centro">
+            <div class="conteudo-tela">
                 <h2>Entrar</h2>
-                <form id="form-login" class="form-simples">
-                    <input type="email" id="login-email" placeholder="Seu e-mail" required>
-                    <input type="password" id="login-senha" placeholder="Sua senha" required>
-                    <button type="submit" class="btn btn-principal">Continuar</button>
+                <form id="form-login" class="form">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <input type="password" placeholder="Sua senha" required>
+                    <button type="submit" class="btn btn-principal">Entrar</button>
                 </form>
             </div>
         </div>
 
         <!-- Tela de Cadastro -->
         <div id="tela-cadastro" class="tela">
-            <div class="cabecalho-simples">
-                <button class="btn-voltar-simples" id="voltar-inicio-cadastro">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
+            <div class="cabecalho-tela-interna">
+                <button class="btn-voltar" id="voltar-cadastro">← Voltar</button>
             </div>
-            <div class="tela-centro">
+            <div class="conteudo-tela">
                 <h2>Criar conta</h2>
-                <form id="form-cadastro" class="form-simples">
-                    <input type="text" id="cadastro-nome" placeholder="Seu nome" required>
-                    <input type="email" id="cadastro-email" placeholder="Seu e-mail" required>
-                    <input type="password" id="cadastro-senha" placeholder="Crie uma senha" required>
-                    <button type="submit" class="btn btn-principal">Começar</button>
+                <form id="form-cadastro" class="form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <input type="password" placeholder="Crie uma senha" required>
+                    <button type="submit" class="btn btn-principal">Criar conta</button>
                 </form>
             </div>
         </div>
 
         <!-- Tela de Temas -->
         <div id="tela-temas" class="tela">
-            <div class="cabecalho-padrao">
-                <button class="btn-voltar-simples voltar-config" id="voltar-chat-temas">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-                <h2>🎨 Tema</h2>
-                <div></div>
+            <div class="cabecalho-tela-interna">
+                <button class="btn-voltar" id="voltar-temas">← Voltar</button>
+                <h2>🎨 Escolha o Tema</h2>
             </div>
-            <div class="lista-opcoes">
-                <p class="categoria-titulo">Disponíveis</p>
-                <label class="opcao-radio">
+            <div class="conteudo-tela">
+                <div class="opcao-tema" data-tema="escuro">
                     <span>🌙 Escuro Suave</span>
-                    <input type="radio" name="tema" value="escuro-suave">
-                </label>
-                <label class="opcao-radio">
+                    <span class="marca-selecionado">✓</span>
+                </div>
+                <div class="opcao-tema" data-tema="claro">
                     <span>☀️ Claro Limpo</span>
-                    <input type="radio" name="tema" value="claro-limpo" checked>
-                </label>
-                <label class="opcao-radio">
+                    <span class="marca-selecionado"></span>
+                </div>
+                <div class="opcao-tema" data-tema="lilas">
                     <span>💜 Lilás Moderno</span>
-                    <input type="radio" name="tema" value="lilas-moderno">
-                </label>
-                <label class="opcao-radio">
+                    <span class="marca-selecionado"></span>
+                </div>
+                <div class="opcao-tema" data-tema="verde">
                     <span>💚 Verde Natureza</span>
-                    <input type="radio" name="tema" value="verde-natureza">
-                </label>
-                <label class="opcao-radio">
+                    <span class="marca-selecionado"></span>
+                </div>
+                <div class="opcao-tema" data-tema="azul">
                     <span>💙 Azul Confiança</span>
-                    <input type="radio" name="tema" value="azul-confianca">
-                </label>
-                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
-                <div class="opcao-bloqueada">
-                    <span>🔥 Moda Escura</span>
-                    <span class="icone-cadeado">🔒</span>
+                    <span class="marca-selecionado"></span>
                 </div>
-                <div class="opcao-bloqueada">
-                    <span>🌸 Rosa Elegante</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🌊 Oceano Profundo</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>❄️ Gelo Cristal</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
+                <p class="dica-tema">Clica em um para mudar o visual! ✨</p>
             </div>
         </div>
 
         <!-- Tela de Vozes -->
         <div id="tela-vozes" class="tela">
-            <div class="cabecalho-padrao">
-                <button class="btn-voltar-simples voltar-config" id="voltar-chat-vozes">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
+            <div class="cabecalho-tela-interna">
+                <button class="btn-voltar" id="voltar-vozes">← Voltar</button>
                 <h2>🎙️ Voz da IA</h2>
-                <div></div>
             </div>
-            <div class="lista-opcoes">
-                <p class="categoria-titulo">Disponíveis</p>
-                <label class="opcao-radio-com-botao">
+            <div class="conteudo-tela">
+                <div class="opcao-voz" data-voz="calma">
                     <span>😌 Calma e Suave</span>
-                    <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
-                        <input type="radio" name="voz" value="calma" checked>
-                    </div>
-                </label>
-                <label class="opcao-radio-com-botao">
+                    <button class="btn-teste-voz">▶ Ouvir</button>
+                </div>
+                <div class="opcao-voz" data-voz="animada">
                     <span>😊 Amigável e Animada</span>
-                    <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
-                        <input type="radio" name="voz" value="amigavel">
-                    </div>
-                </label>
-                <label class="opcao-radio-com-botao">
+                    <button class="btn-teste-voz">▶ Ouvir</button>
+                </div>
+                <div class="opcao-voz" data-voz="profissional">
                     <span>👔 Clara e Profissional</span>
-                    <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
-                        <input type="radio" name="voz" value="profissional">
-                    </div>
-                </label>
-                <label class="opcao-radio-com-botao">
+                    <button class="btn-teste-voz">▶ Ouvir</button>
+                </div>
+                <div class="opcao-voz" data-voz="masculina">
                     <span>🎙️ Suave Masculina</span>
-                    <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
-                        <input type="radio" name="voz" value="masculina">
-                    </div>
-                </label>
-                <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
-                <div class="opcao-bloqueada">
-                    <span>🎵 Energética</span>
-                    <span class="icone-cadeado">🔒</span>
+                    <button class="btn-teste-voz">▶ Ouvir</button>
                 </div>
-                <div class="opcao-bloqueada">
-                    <span>🌷 Doce e Gentil</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>📖 Narradora</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🎤 Criar minha própria voz</span>
-                    <span class="icone-cadeado">🔒</span>
-                </div>
+                <p class="dica-voz">Clica em "Ouvir" para testar! 🔊</p>
             </div>
         </div>
 
-        <!-- Tela Principal / Chat -->
+        <!-- Tela de Chat -->
         <div id="tela-chat" class="tela">
-            <div class="cabecalho-chat-limpo">
-                <button id="btn-abrir-menu" class="btn-menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-                <h1 class="titulo-app">Nicoluz IA</h1>
-                <button id="btn-ver-planos" class="btn-link-plano">Ver planos</button>
+            <div class="cabecalho-chat">
+                <button id="btn-abrir-menu" class="btn-menu">☰</button>
+                <h1 class="titulo-chat">Nicoluz IA</h1>
+                <button id="btn-planos" class="btn-plano">⚡</button>
             </div>
 
-            <div id="area-mensagens" class="area-chat">
-                <div class="mensagem ia inicio">
-                    <p>Olá! Bem-vindo ao Nicoluz IA! Como posso ajudar você hoje? ✨</p>
-                    <div class="acoes-mensagem">
-                        <button class="btn-acao-mensagem" data-acao="copiar" title="Copiar">📋</button>
-                        <button class="btn-acao-mensagem" data-acao="ouvir" title="Ouvir resposta">🔊</button>
-                        <button class="btn-acao-mensagem" data-acao="compartilhar" title="Compartilhar">↗️</button>
-                    </div>
+            <div id="area-mensagens" class="area-mensagens">
+                <div class="mensagem ia">
+                    <p>Olá! Bem-vindo ao Nicoluz IA! ✨</p>
+                    <p>Como posso ajudar você hoje?</p>
                 </div>
             </div>
 
-            <div class="entrada-mensagem">
+            <div class="barra-entrada">
                 <input type="text" id="campo-mensagem" placeholder="Digite sua mensagem..." autocomplete="off">
+                <button id="btn-microfone" class="btn-icone">🎤</button>
                 <button id="btn-enviar" class="btn-enviar">➤</button>
             </div>
         </div>
