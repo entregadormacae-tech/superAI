@@ -49,8 +49,27 @@
         <!-- Tela de Boas-vindas -->
         <div id="tela-inicio" class="tela ativa">
             <div class="tela-centro">
-                <div class="logo-grande">🤖</div>
-                <h1>SuperAI</h1>
+                <div class="logo-boreal">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#007AFF" stop-opacity="0.9"/>
+                                <stop offset="50%" stop-color="#5AC8FA" stop-opacity="0.7"/>
+                                <stop offset="100%" stop-color="#00C7BE" stop-opacity="0.5"/>
+                            </linearGradient>
+                            <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#00C7BE" stop-opacity="0.4"/>
+                                <stop offset="100%" stop-color="#007AFF" stop-opacity="0.8"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="42" stroke="url(#grad1)" stroke-width="1.5" fill="none" opacity="0.7"/>
+                        <circle cx="50" cy="50" r="32" stroke="url(#grad2)" stroke-width="1" fill="none" opacity="0.5"/>
+                        <circle cx="50" cy="50" r="22" stroke="url(#grad1)" stroke-width="0.8" fill="none" opacity="0.4"/>
+                        <circle cx="50" cy="50" r="12" fill="url(#grad1)" opacity="0.12"/>
+                        <circle cx="50" cy="50" r="5" fill="url(#grad1)" opacity="0.9"/>
+                    </svg>
+                </div>
+                <h1 class="titulo-principal">SuperAI</h1>
                 <p class="subtitulo">Seu assistente inteligente completo</p>
                 
                 <div class="botoes-inicio">
@@ -59,8 +78,8 @@
                 </div>
 
                 <div class="resumo-planos">
-                    <p class="texto-pequeno"><strong>Gratuito:</strong> 50 mensagens/dia • 5 temas • 4 vozes • sem anúncios ✅</p>
-                    <p class="texto-pequeno destaque-pro"><strong>Pro:</strong> Ilimitado • 15 temas • 10 vozes + criar sua voz • imagens, arquivos e vídeos ⚡</p>
+                    <p class="texto-pequeno"><strong>Gratuito</strong> • 50 mensagens/dia • 5 temas • 4 vozes • sem anúncios ✅</p>
+                    <p class="texto-pequeno destaque-pro"><strong>Pro</strong> • Ilimitado • 15 temas • 10 vozes + criar sua voz • imagens, arquivos e vídeos ⚡</p>
                 </div>
             </div>
         </div>
@@ -68,7 +87,7 @@
         <!-- Tela de Login -->
         <div id="tela-login" class="tela">
             <div class="cabecalho-simples">
-                <button class="btn-voltar-simples">
+                <button class="btn-voltar-simples" id="voltar-inicio-login">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -87,7 +106,7 @@
         <!-- Tela de Cadastro -->
         <div id="tela-cadastro" class="tela">
             <div class="cabecalho-simples">
-                <button class="btn-voltar-simples">
+                <button class="btn-voltar-simples" id="voltar-inicio-cadastro">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -107,7 +126,7 @@
         <!-- Tela de Temas -->
         <div id="tela-temas" class="tela">
             <div class="cabecalho-padrao">
-                <button class="btn-voltar-simples voltar-config">
+                <button class="btn-voltar-simples voltar-config" id="voltar-chat-temas">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -140,34 +159,20 @@
                 
                 <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
                 <div class="opcao-bloqueada">
-                    <span>🔥 Moda Escura 🔒</span>
+                    <span>🔥 Moda Escura</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>🌸 Rosa Elegante 🔒</span>
+                    <span>🌸 Rosa Elegante</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>🌊 Oceano Profundo 🔒</span>
+                    <span>🌊 Oceano Profundo</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>🍂 Outono 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>❄️ Gelo Cristal 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🌌 Galáxia 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🌅 Pôr do Sol 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🌲 Floresta 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🧊 Ciano Futurista 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🏔️ Pedra Cinza 🔒</span>
+                    <span>❄️ Gelo Cristal</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
             </div>
         </div>
@@ -175,7 +180,7 @@
         <!-- Tela de Vozes -->
         <div id="tela-vozes" class="tela">
             <div class="cabecalho-padrao">
-                <button class="btn-voltar-simples voltar-config">
+                <button class="btn-voltar-simples voltar-config" id="voltar-chat-vozes">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -188,53 +193,48 @@
                 <label class="opcao-radio-com-botao">
                     <span>😌 Calma e Suave</span>
                     <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
                         <input type="radio" name="voz" value="calma" checked>
                     </div>
                 </label>
                 <label class="opcao-radio-com-botao">
                     <span>😊 Amigável e Animada</span>
                     <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
                         <input type="radio" name="voz" value="amigavel">
                     </div>
                 </label>
                 <label class="opcao-radio-com-botao">
                     <span>👔 Clara e Profissional</span>
                     <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
                         <input type="radio" name="voz" value="profissional">
                     </div>
                 </label>
                 <label class="opcao-radio-com-botao">
                     <span>🎙️ Suave Masculina</span>
                     <div class="botoes-opcao">
-                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶️</button>
+                        <button class="btn-ouvir-mini" title="Ouvir amostra">▶</button>
                         <input type="radio" name="voz" value="masculina">
                     </div>
                 </label>
                 
                 <p class="categoria-titulo pro-titulo">⭐ Exclusivos do Pro</p>
                 <div class="opcao-bloqueada">
-                    <span>🎵 Energética 🔒</span>
+                    <span>🎵 Energética</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>🌷 Doce e Gentil 🔒</span>
+                    <span>🌷 Doce e Gentil</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>📖 Narradora 🔒</span>
+                    <span>📖 Narradora</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
                 <div class="opcao-bloqueada">
-                    <span>🌍 Internacional 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>🔮 Profunda 🔒</span>
-                </div>
-                <div class="opcao-bloqueada">
-                    <span>⚡ Rápida e Direta 🔒</span>
-                </div>
-                <div class="opcao-bloqueada criar-voz">
-                    <span>🎤 Criar minha própria voz 🔒</span>
+                    <span>🎤 Criar minha própria voz</span>
+                    <span class="icone-cadeado">🔒</span>
                 </div>
             </div>
         </div>
@@ -251,7 +251,7 @@
                     </svg>
                 </button>
                 <h1 class="titulo-app">SuperAI</h1>
-                <button id="btn-ver-planos" class="btn-link-plano">⚡ Ver planos</button>
+                <button id="btn-ver-planos" class="btn-link-plano">Ver planos</button>
             </div>
 
             <!-- Área de mensagens -->
@@ -297,20 +297,4 @@
                     <span>Câmera</span>
                 </div>
                 <div class="opcao-flutuante" id="opcao-fotos">
-                    <span class="icone-opcao">🖼️</span>
-                    <span>Fotos</span>
-                </div>
-                <div class="opcao-flutuante" id="opcao-arquivos">
-                    <span class="icone-opcao">📄</span>
-                    <span>Arquivos</span>
-                </div>
-                <div class="opcao-flutuante" id="opcao-pensar">
-                    <span class="icone-opcao">💭</span>
-                    <span>Pensar mais</span>
-                </div>
-            </div>
-
-            <!-- Barra inferior de entrada -->
-            <div class="barra-entrada">
-                <input type="file" id="input-camera" accept="image/*" capture="environment" class="escondido">
-                <input type="file" id="input-fotos" accept
+                    <span class="icone-op
