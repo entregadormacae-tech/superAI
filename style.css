@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3f 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.tela {
+    display: none;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+/* Tela Inicial */
+.fundo-animado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(150, 93, 233, 0.1) 0%, transparent 50%);
+    z-index: 0;
+    animation: flutuar 8s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.container-inicio {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+h1 {
+    font-size: 42px;
+    background: linear-gradient(90deg, #4facfe, #965de9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 18px;
+    color: #b0b0d0;
+    margin-bottom: 40px;
+}
+
+.btn-principal {
+    background: linear-gradient(90deg, #4facfe, #965de9);
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+}
+
+/* Tela Chat */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.btn-voltar, .btn-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.cabecalho h2 {
+    font-size: 20px;
+}
+
+.area-mensagens {
+    padding: 80px 20px 80px;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-y: auto;
+    min-height: calc(100vh - 140px);
+}
+
+.mensagem {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    animation: aparece 0.3s ease-out;
+}
+
+@keyframes aparece {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensagem.usuario {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.mensagem .texto {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px 18px;
+    border-radius: 18px;
+    border-top-left-radius: 4px;
+    line-height: 1.5;
+    max-width: 75%;
+}
+
+.mensagem.usuario .texto {
+    background: linear-gradient(90deg, #4facfe, #965de9);
+    border-top-left-radius: 18px;
+    border-top-right-radius: 4px;
+}
+
+.contador-mensagens {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #ccc;
+    z-index: 5;
+}
+
+.contador-mensagens span {
+    color: #4facfe;
+    font-weight: bold;
+}
+
+.caixa-envio {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.caixa-envio input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.caixa-envio input::placeholder {
+    color: #888;
+}
+
+.caixa-envio button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(90deg, #4facfe, #965de9);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.caixa-envio button:hover {
+    transform: scale(1.05);
+}
+
+/* Menu Lateral */
+#menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    z-index: 100;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+#menu-lateral.aberto {
+    transform: translateX(0);
+}
+
+.conteudo-menu {
+    position: relative;
+    z-index: 2;
+    background: #1a1a3f;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.fundo-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#menu-lateral.aberto .fundo-menu {
+    opacity: 1;
+}
+
+.cabecalho-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-fechar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.plano {
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 2px solid transparent;
+}
+
+.plano.ativo {
+    background: rgba(79, 172, 254, 0.1);
+    border-color: #4facfe;
+}
+
+.plano.pro {
+    background: rgba(150, 93, 233, 0.1);
+    opacity: 0.7;
+}
+
+.plano h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.plano p {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.btn-pro {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: default;
+}
