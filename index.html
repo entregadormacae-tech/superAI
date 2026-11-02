@@ -4,10 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <title>SuperAI</title>
+    <title>SuperAI — Seu Assistente Inteligente</title>
 </head>
 <body>
-    <h1>✅ Funcionou!</h1>
-    <p>Se você está vendo essa mensagem, o site está no ar!</p>
+    <div class="app-container">
+        <!-- Tela de Boas-vindas -->
+        <div id="tela-inicio" class="tela ativa">
+            <div class="logo">
+                <div class="icone-logo">🤖</div>
+                <h1>SuperAI</h1>
+                <p class="subtitulo">Seu assistente inteligente completo</p>
+            </div>
+            
+            <div class="botoes-inicio">
+                <button id="btn-entrar" class="btn btn-principal">🔐 Entrar</button>
+                <button id="btn-cadastrar" class="btn btn-secundario">✨ Criar Conta</button>
+            </div>
+
+            <div class="info-planos">
+                <div class="plano-card gratuito">
+                    <h3>🌍 Plano Gratuito</h3>
+                    <p>💬 50 mensagens por dia</p>
+                    <p>🖼️ Imagens e vídeos com limite</p>
+                    <p>🎨 5 temas para escolher</p>
+                    <p class="destaque">✅ Sem anúncios</p>
+                </div>
+                <div class="plano-card pro">
+                    <h3>⚡ Plano Pro</h3>
+                    <p>💬 Mensagens ilimitadas</p>
+                    <p>🎬 Geração de imagens e vídeos</p>
+                    <p>🎨 15 temas exclusivos</p>
+                    <p>🚀 Prioridade de resposta</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Login -->
+        <div id="tela-login" class="tela">
+            <button class="btn-voltar">← Voltar</button>
+            <h2>🔐 Entrar</h2>
+            <form id="form-login">
+                <input type="email" id="login-email" placeholder="Seu e-mail" required>
+                <input type="password" id="login-senha" placeholder="Sua senha" required>
+                <button type="submit" class="btn btn-principal">Acessar</button>
+            </form>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div id="tela-cadastro" class="tela">
+            <button class="btn-voltar">← Voltar</button>
+            <h2>✨ Criar Conta</h2>
+            <form id="form-cadastro">
+                <input type="text" id="cadastro-nome" placeholder="Seu nome completo" required>
+                <input type="email" id="cadastro-email" placeholder="Seu melhor e-mail" required>
+                <input type="password" id="cadastro-senha" placeholder="Crie uma senha segura" required>
+                <button type="submit" class="btn btn-principal">Começar agora</button>
+            </form>
+        </div>
+
+        <!-- Tela de Escolha de Temas -->
+        <div id="tela-temas" class="tela">
+            <div class="cabecalho-tela">
+                <button class="btn-voltar">← Voltar</button>
+                <h2>🎨 Personalizar Tema</h2>
+                <div></div>
+            </div>
+            
+            <div class="secao-temas">
+                <h3>🌍 Temas Disponíveis</h3>
+                <div class="grade-temas">
+                    <div class="tema-item" data-tema="escuro-suave">
+                        <div class="amostra-tema escuro-suave"></div>
+                        <span>🌙 Escuro Suave</span>
+                    </div>
+                    <div class="tema-item" data-tema="claro-limpo">
+                        <div class="amostra-tema claro-limpo"></div>
+                        <span>☀️ Claro Limpo</span>
+                    </div>
+                    <div class="tema-item" data-tema="lilas-moderno">
+                        <div class="amostra-tema lilas-moderno"></div>
+                        <span>💜 Lilás Moderno</span>
+                    </div>
+                    <div class="tema-item" data-tema="verde-natureza">
+                        <div class="amostra-tema verde-natureza"></div>
+                        <span>💚 Verde Natureza</span>
+                    </div>
+                    <div class="tema-item" data-tema="azul-confianca">
+                        <div class="amostra-tema azul-confianca"></div>
+                        <span>💙 Azul Confiança</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="secao-temas pro-temas">
+                <h3>⭐ Temas Exclusivos — Plano Pro</h3>
+                <p class="aviso-pro">Desbloqueie esses temas e muito mais assinando o Pro ✨</p>
+                <div class="grade-temas">
+                    <div class="tema-item bloqueado" data-tema="moda-escura">
+                        <div class="amostra-tema moda-escura"></div>
+                        <span>🔥 Moda Escura 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="rosa-elegante">
+                        <div class="amostra-tema rosa-elegante"></div>
+                        <span>🌸 Rosa Elegante 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="oceano">
+                        <div class="amostra-tema oceano"></div>
+                        <span>🌊 Oceano Profundo 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="outono">
+                        <div class="amostra-tema outono"></div>
+                        <span>🍂 Outono 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="gelo">
+                        <div class="amostra-tema gelo"></div>
+                        <span>❄️ Gelo Cristal 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="galaxia">
+                        <div class="amostra-tema galaxia"></div>
+                        <span>🌌 Galáxia 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="por-do-sol">
+                        <div class="amostra-tema por-do-sol"></div>
+                        <span>🌅 Pôr do Sol 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="floresta">
+                        <div class="amostra-tema floresta"></div>
+                        <span>🌲 Floresta 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="ciano-futurista">
+                        <div class="amostra-tema ciano-futurista"></div>
+                        <span>🧊 Ciano Futurista 🔒</span>
+                    </div>
+                    <div class="tema-item bloqueado" data-tema="pedra-cinza">
+                        <div class="amostra-tema pedra-cinza"></div>
+                        <span>🏔️ Pedra Cinza 🔒</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela Principal / Chat -->
+        <div id="tela-chat" class="tela">
+            <div class="cabecalho-chat">
+                <button id="btn-abrir-temas" class="btn-tema-btn" title="Mudar tema">🎨</button>
+                <h2>SuperAI</h2>
+                <div class="info-usuario">
+                    <span id="nome-usuario">Usuário</span>
+                    <span id="contador-mensagens" class="badge">50/50</span>
+                    <button id="btn-plano-pro" class="btn-pequeno">⚡ Assinar Pro</button>
+                    <button id="btn-sair" class="btn-sair">Sair</button>
+                </div>
+            </div>
+
+            <!-- Pré-visualização de imagem -->
+            <div id="preview-imagem" class="preview-imagem escondido">
+                <img id="img-preview" src="" alt="Pré-visualização da imagem">
+                <button id="btn-remover-imagem" class="btn-remover" title="Remover">✕</button>
+            </div>
+
+            <div id="area-mensagens" class="area-mensagens">
+                <div class="mensagem ia">
+                    <div class="avatar-mensagem">🤖</div>
+                    <div class="conteudo-mensagem">
+                        <p>Olá! Eu sou a SuperAI! ✨</p>
+                        <p>Como posso ajudar você hoje?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="botoes-funcoes">
+                <button class="btn-funcao ativo" data-funcao="texto">💬 Conversar</button>
+                <button class="btn-funcao" data-funcao="imagem">🖼️ Criar Imagem</button>
+                <button class="btn-funcao" data-funcao="video">🎬 Criar Vídeo</button>
+            </div>
+
+            <div class="entrada-mensagem">
+                <input type="file" id="input-camera" accept="image/*" capture="environment" class="escondido">
+                <input type="file" id="input-galeria" accept="image/*" class="escondido">
+                
+                <button id="btn-camera" class="btn-acao" title="Tirar foto com a câmera">📷</button>
+                <button id="btn-galeria" class="btn-acao" title="Escolher da galeria">🖼️</button>
+                
+                <textarea id="entrada-texto" placeholder="Digite sua mensagem ou envie uma imagem..."></textarea>
+                
+                <button id="btn-microfone" class="btn-acao" title="Falar com a voz">🎤</button>
+                <button id="btn-enviar" class="btn-enviar" title="Enviar mensagem">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aviso de tema Pro -->
+    <div id="aviso-tema-pro" class="modal escondido">
+        <div class="modal-conteudo">
+            <h3>⭐ Tema Exclusivo do Plano Pro</h3>
+            <p>Esse tema é um dos 10 exclusivos do plano Pro. Assine agora e desbloqueie todos os temas, mensagens ilimitadas e muito mais! ✨</p>
+            <div class="botoes-modal">
+                <button id="btn-fechar-aviso-tema" class="btn-secundario">Talvez depois</button>
+                <button id="btn-assinar-pelo-tema" class="btn-principal">⚡ Assinar Agora</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
