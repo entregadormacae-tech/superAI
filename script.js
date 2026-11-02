@@ -18,7 +18,6 @@ function fecharMenu() {
     menuLateral.classList.add('escondido');
 }
 
-// Fecha menu ao clicar fora dele
 menuLateral.addEventListener('click', function(e) {
     if (e.target === menuLateral) {
         fecharMenu();
@@ -106,16 +105,12 @@ document.getElementById('btn-planos').addEventListener('click', function() {
 // ===== SELEÇÃO DE TEMAS =====
 document.querySelectorAll('.opcao-tema').forEach(tema => {
     tema.addEventListener('click', function() {
-        // Remove seleção de todos
         document.querySelectorAll('.opcao-tema').forEach(t => t.classList.remove('selecionado'));
-        // Adiciona na clicada
         this.classList.add('selecionado');
         
-        // Atualiza visual da marcação
         document.querySelectorAll('.marca-selecionado').forEach(m => m.textContent = '');
         this.querySelector('.marca-selecionado').textContent = '✓';
         
-        // Aplica tema (simplificado)
         const nomeTema = this.getAttribute('data-tema');
         document.body.className = '';
         if (nomeTema !== 'escuro') {
@@ -147,7 +142,7 @@ function adicionarMensagem(texto, ehUsuario = false) {
     div.className = 'mensagem ' + (ehUsuario ? 'usuario' : 'ia');
     div.innerHTML = '<p>' + texto.replace(/\n/g, '</p><p>') + '</p>';
     areaMensagens.appendChild(div);
-    areaMensagens.scrollTop = areaMensagens.scrollHeight; // Rola pra baixo
+    areaMensagens.scrollTop = areaMensagens.scrollHeight;
 }
 
 document.getElementById('btn-enviar').addEventListener('click', enviarMensagem);
@@ -173,7 +168,7 @@ async function enviarMensagem() {
     areaMensagens.scrollTop = areaMensagens.scrollHeight;
     
     try {
-        // Link do servidor — JÁ ESTÁ CERTO! ✅
+        // ✅ LINK CORRETO DO SEU SERVIDOR
         const URL_SERVIDOR = "https://nicoluz-ia-servidor.onrender.com";
         
         const resposta = await fetch(`${URL_SERVIDOR}/api/chat`, {
@@ -185,20 +180,22 @@ async function enviarMensagem() {
             })
         });
         
+        if (!resposta.ok) throw new Error(`Erro: ${resposta.status}`);
+        
         const dados = await resposta.json();
         
-        // Remove o "escrevendo..."
+        // Remove "escrevendo..."
         const tempEl = document.getElementById(idTemp);
         if (tempEl) tempEl.remove();
         
-        // Mostra a resposta da IA
+        // Mostra resposta
         adicionarMensagem(dados.resposta || "Sem resposta disponível");
         
     } catch (erro) {
         const tempEl = document.getElementById(idTemp);
         if (tempEl) tempEl.remove();
-        adicionarMensagem("🔌 Erro de conexão. Tente novamente em instantes.");
-        console.error(erro);
+        adicionarMensagem("⚠️ Servidor está acordando... Tente em 1 minuto!");
+        console.error("ERRO:", erro);
     }
 }
 
@@ -207,5 +204,4 @@ document.getElementById('btn-microfone').addEventListener('click', function() {
     alert('🎤 Entrada de voz em desenvolvimento! Em breve disponível!');
 });
 
-// ===== INICIALIZAÇÃO =====
 console.log('✅ Nicoluz IA carregada com sucesso!');
