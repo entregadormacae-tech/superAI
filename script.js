@@ -155,19 +155,51 @@ campoMensagem.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') enviarMensagem();
 });
 
-function enviarMensagem() {
+async function enviarMensagem() {
     const texto = campoMensagem.value.trim();
     if (!texto) return;
     
-    // Mensagem do usuário
+    // Mostra mensagem do usuário
     adicionarMensagem(texto, true);
     campoMensagem.value = '';
     
-    // Resposta da IA (simulada por enquanto)
-    setTimeout(() => {
-        adicionarMensagem('Recebi sua mensagem! ✨\n\nIsso é só uma amostra. Quando conectarmos a IA real, eu vou responder de verdade para você!');
-    }, 600);
+    // Indicador de "escrevendo..."
+    const idTemp = 'temp-' + Date.now();
+    areaMensagens.insertAdjacentHTML('beforeend', `
+        <div id="${idTemp}" class="mensagem ia">
+            <p>✍️ Escrevendo...</p>
+        </div>
+    `);
+    areaMensagens.scrollTop = areaMensagens.scrollHeight;
+    
+    try {
+        // 👇 COLOCA SEU LINK DO SERVIDOR AQUI
+        const URL_SERVIDOR = "https://nicoluz-ia-servidor.onrender.com";
+        
+        const resposta = await fetch(`${URL_SERVIDOR}/api/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                texto: texto,
+                historico: []
+            })
+        });
+        
+        const dados = await resposta.json();
+        
+        // Remove o "escrevendo..."
+        document.getElementById(idTemp)?.remove();
+        
+        // Mostra a resposta da IA
+        adicionarMensagem(dados.resposta || "Sem resposta disponível");
+        
+    } catch (erro) {
+        document.getElementById(idTemp)?.remove();
+        adicionarMensagem("🔌 Erro de conexão. Tente novamente em instantes.");
+        console.error(erro);
+    }
 }
+
 
 // ===== BOTÃO MICROFONE =====
 document.getElementById('btn-microfone').addEventListener('click', function() {
