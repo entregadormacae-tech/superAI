@@ -34,7 +34,7 @@ def conversar(mensagem: Mensagem):
         return {"resposta": "⚠️ Chave da API não configurada no servidor!"}
     
     try:
-        resposta = modelo.generate_content(mensagem.texto)
+        resposta = model.generate_content(mensagem.texto)
         return {"resposta": resposta.text}
     except Exception as erro:
         return {"resposta": f"⚠️ Erro: {str(erro)}"}
