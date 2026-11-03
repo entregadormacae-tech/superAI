@@ -18,7 +18,7 @@ app.add_middleware(
 # Configuração da IA
 CHAVE_GEMINI = os.getenv("GOOGLE_API_KEY", "")
 genai.configure(api_key=CHAVE_GEMINI)
-modelo = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 class Mensagem(BaseModel):
     texto: str
